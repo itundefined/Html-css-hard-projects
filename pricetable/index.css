@@ -1,1 +1,171 @@
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;400&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;800&display=swap");
+
+body {
+  margin: 0;
+}
+
+:root {
+  --textColor: #2f1c6a;
+  --discountColor: #8c85ff;
+  --buttonColor: #673de6;
+  --buttonHoverColor: #491bd5;
+  --buttonColor-special: #fc5185;
+  --buttonColor-special-hover: #fb1f62;
+  --font: "Mulish", sans-serif;
+}
+
+.All-Prices * {
+  font-family: var(--font);
+}
+
+article > h3 {
+  margin: 0;
+  margin-bottom: 10px;
+  width: 100%;
+  word-wrap: break-word;
+  font-weight: bold;
+}
+
+.discount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  width: 100%;
+  margin-top: 3rem;
+}
+
+.discount h3 {
+  color: white !important;
+  background-color: var(--discountColor);
+  border-radius: 190px;
+  padding: 5px 10px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.discount p {
+  text-decoration: line-through;
+  margin: 0;
+}
+
+.price {
+  width: 100%;
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0 0 2rem 0;
+}
+
+.All-Prices {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 100px;
+}
+
+.price-table1 {
+  padding: 35px;
+  box-shadow: 0 0 16px rgb(0 0 0 / 10%);
+  border-radius: 6px;
+  text-align: center;
+  transition: 500ms;
+}
+
+.best-value-container {
+    transition: 500ms;
+}
+
+.normal:hover {
+  box-shadow: 0 0 16px rgb(0 0 0 / 23%);
+  transform: scale(1.03);
+}
+
+.best-value-container:hover{
+  box-shadow: 0 0 16px rgb(0 0 0 / 23%);
+  transform: scale(1.03);
+}
+
+.All-Prices h3,
+span {
+  color: var(--textColor);
+}
+
+.All-Prices button {
+  background-color: var(--buttonColor);
+  display: inline-block;
+  color: white;
+  border: none;
+  border-radius: 180px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 5% 25%;
+  transition: 500ms;
+}
+
+.All-Prices button:hover {
+  cursor: pointer;
+  background-color: var(--buttonHoverColor);
+}
+
+.All-Prices p {
+  color: gray;
+}
+
+ul {
+  list-style: none;
+  padding-left: 20px;
+}
+
+li:before {
+  content: "\f00c"; /* FontAwesome Unicode */
+  font-family: FontAwesome;
+  padding-right: 20px;
+}
+
+.list {
+  width: 100%;
+  display: flex;
+}
+
+article {
+  width: 250px;
+  border: solid;
+  border-width: 1px;
+  border-color: rgb(0 0 0 / 15%);
+}
+
+.special {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.special button {
+  background-color: var(--buttonColor-special);
+}
+
+.special button:hover {
+  background-color: var(--buttonColor-special-hover);
+}
+
+.discount h3.special {
+  background-color: var(--buttonColor-special);
+}
+
+.best-value h4 {
+  margin: 0;
+  color: white;
+  text-transform: uppercase;
+  font-family: var(--font);
+}
+
+.best-value {
+  height: 30px;
+  margin-top: -30px;
+  background-color: var(--buttonColor-special);
+  text-align: center;
+}
