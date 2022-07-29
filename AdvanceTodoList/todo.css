@@ -1,0 +1,197 @@
+/* normalizing the html */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;400;700&display=swap');
+
+*{
+    margin: 0;
+}
+:root {
+    --Font: 'Oswald', sans-serif;
+    --containerWidth: 80vw;
+    --FontSize: 15px;
+    --letterSpacing: 1px;
+}
+
+.inputs, .showtasks{
+    margin: auto;
+    margin-top: 50px;
+    width: var(--containerWidth);
+}
+
+.inputs{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.inputs textarea {
+    width: 100%;
+    font-family: var(--Font);
+    font-weight: lighter;
+    font-size: large;
+    letter-spacing: var(--letterSpacing);
+    box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+    border: solid 0.25px rgba(0, 0, 0, 10%);
+} 
+
+  
+#AddTheTask, #editnow{
+    width: 100px;
+    height: 50px;
+    background-color: white;
+    box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+    font-family: var(--Font);
+    font-weight: lighter;
+    font-size: var(--FontSize);
+    letter-spacing: var(--letterSpacing);
+    border: solid 0.25px rgba(0, 0, 0, 10%);
+    cursor: pointer;
+    transition: 500ms;
+}
+
+
+#editnow:hover{
+    transition: 500ms;
+    transform: scale(1.2);    
+}
+
+.inputs button:hover {
+    transition: 500ms;
+    transform: scale(1.2);
+}
+
+.spans-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+
+.spans-container{
+    padding: 10px 15px;
+    margin-top: 20px;
+    border: solid 1px rgba(0, 0, 0, 10%);
+    border-radius: 25px;
+    font-family: var(--Font);
+    letter-spacing: var(--letterSpacing);
+    font-size: var(--FontSize);
+    font-weight: bolder;
+    box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+}
+
+.hrLine{
+    border: solid 0.20px rgba(0, 0, 0, 20%);
+}
+
+
+.mainTaskSpan{
+    margin-top: 10px;
+    font-weight: lighter;
+}
+
+.title-cross{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title-cross span{
+    transition: 500ms;
+    cursor: pointer;
+}
+
+.title-cross span:hover{
+    transform: rotate(-90deg);
+    transition: 500ms;
+}
+
+
+.funcContainer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.updateIcon{
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    transition: 500ms;
+}
+
+.deleteIcon{
+    cursor: pointer;
+    transition: 500ms;
+}
+
+.updateIcon:hover{
+    transform: scale(1.10);
+    transition: 400ms;
+}
+
+
+.deleteIcon:hover{
+    transform: scale(1.10);
+    transition: 400ms;
+}
+
+
+
+.func-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+
+
+/* Now make the editable workable */
+
+.editable {
+    display: none;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 55%);
+}
+
+.styling span{
+    cursor: pointer;
+}
+
+.styling {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 10px;
+}
+
+.styling textarea{
+    font-family: var(--Font);
+    width: 80%;
+    font-weight: lighter;
+    font-size: var(--FontSize);
+    letter-spacing: var(--letterSpacing);
+}
+
+
+.title-add{
+    display: none;
+}
+
+.title-add span{
+    cursor: pointer;
+    transition: 500ms;
+}
+
+.title-add span:hover{
+    transition: 500ms;
+    transform: rotate(-90deg);
+}

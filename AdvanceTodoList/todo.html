@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do</title>
+    <link rel="stylesheet" href="./todo.css">
+    <script src="./todo.js" defer></script>
+    <link rel="shortcut icon" href="http://unsplash.it/40/40" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+</head>
+<body>
+    
+    <!-- The Edit window only opens when the task needs to get update -->
+
+    <section class="editable">
+        <div class="styling">
+            <textarea id="editable-input" placeholder="Edit..." cols="30" rows="10"></textarea>
+            <button id="editnow" onclick="updateTheTask()">Confirm</button>
+        </div>
+    </section>
+
+    <!-- Main Section -->
+
+    <section class="MainSection">
+        <div class="inputs">
+            <div class="title-cross">
+                <textarea id="title" placeholder="What Would be the Title ? 🤔" cols="30" rows="1"></textarea>
+                <span class="material-symbols-outlined" id="close-title" onclick="hideTitle('title-cross', 'title-add')">
+                    close
+                    </span>
+            </div>
+
+            <div class="title-add">
+                <span>Add the title</span>
+                <span class="material-symbols-outlined" id="close-title" onclick="hideTitle('title-cross', 'title-cross')">
+                    add
+                    </span>
+            </div>
+
+            <textarea id="task" placeholder="Learning a new Language maybe...🥳" cols="30" rows="10"></textarea>
+            <button id="AddTheTask" onclick="addTheTask()">Add</button>
+        </div>
+
+        <div class="showtasks">
+
+        </div>
+
+    </section>
+
+</body>
+</html>
