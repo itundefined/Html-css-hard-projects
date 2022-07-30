@@ -49,6 +49,34 @@
     transition: 500ms;
 }
 
+#AddTheTask{
+    position: relative;
+    z-index: 1;
+}
+
+#AddTheTask::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background-color: #0AF;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms ease-in-out;
+}
+
+#AddTheTask:hover::before{
+    transform: scaleX(1);
+    transition: transform 500ms ease-in-out;
+}
+
+#AddTheTask:hover{
+    color: whitesmoke;
+}
+
 
 #editnow:hover{
     transition: 500ms;
