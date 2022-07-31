@@ -124,6 +124,10 @@
     align-items: center;
 }
 
+#title {
+    width: 90%;
+}
+
 .title-cross span{
     transition: 500ms;
     cursor: pointer;
@@ -186,6 +190,7 @@
     height: 100vh;
     text-align: center;
     background-color: rgba(0, 0, 0, 55%);
+    z-index: 2;
 }
 
 .styling span{
