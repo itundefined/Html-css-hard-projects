@@ -1,0 +1,280 @@
+/* Importing the fonts which youtube uses */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&display=swap');
+
+/* Normalizing the html */
+
+* {
+    margin: 0;
+}
+
+:root {
+    --dominatingSize: 95vw;
+    --sideBarSize: calc(100vw - var(--dominatingSize));
+    --Font: 'Roboto', sans-serif;
+}
+
+
+.main-container {
+    display: flex;
+}
+
+.sidebar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--sideBarSize);
+}
+
+.headerBar {
+    width: var(--dominatingSize);
+    padding-right: 10px;
+}
+
+
+/* Styling the header container that contains every header element */
+
+.header-content {
+    display: flex;
+    align-items: center;
+    width: var(--dominant-area-width);
+}
+
+.header-item {
+    height: 100%;
+    width: calc(100% / 3);
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+
+
+/* Stying header particular items inside the header  */
+
+/* Header item 1 */
+.header-item1 {
+    display: flex;
+}
+
+
+/* Header Child 2 */
+
+.header-item2 {
+    display: flex;
+    justify-content: center;
+}
+
+.header-item2 span {
+    width: 10%;
+    background-color: rgba(0, 0, 0, 25%);
+    text-align: center;
+}
+
+
+.header-item2 input {
+    width: calc(100% - 10%);
+    border: 1px solid rgba(0, 0, 0, 40%);
+}
+
+
+/* Header Child 3 */
+.header-item3 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+
+/* General in header */
+.icon {
+    width: 100px;
+}
+
+.profile-image-container {
+    width: 40px;
+    height: 40px;
+}
+
+.profile-image-container img {
+    border-radius: 190px;
+}
+
+.profile-image-container {
+    background-color: gray;
+    border-radius: 190px;
+}
+
+sup {
+    font-family: var(--Font);
+    font-weight: lighter;
+    font-size: 10px;
+    margin-top: -5px;
+}
+
+
+
+
+
+/* Main Video and side-bar section------------------------- */
+
+
+
+/* parent section */
+.main-section {
+    display: flex;
+    margin-top: 30px;
+}
+
+/* Child 1st */
+.side-bar {
+    width: var(--sideBarSize);
+    display: flex;
+    justify-content: center;
+}
+
+
+/* child 2nd */
+.videos-section {
+    width: var(--dominatingSize);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    row-gap: 40px;
+    /* align-items: center; */
+}
+
+
+.icon-and-name-template {
+    text-align: center;
+}
+
+
+.side-bar h4 {
+    font-family: var(--Font);
+    font-weight: lighter;
+    font-size: 12px;
+}
+
+
+.menu-icon-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+/* Mainly Video Widget styling */
+
+.video-element:hover{
+    cursor: pointer;
+    transition: 1000ms;
+    transition-delay: 1500ms;
+    transform: scale(1.10);
+  }
+  
+  .video-element:hover .video-data-container{
+    transition: 1000ms;
+    transition-delay: 1500ms;
+    border: 1px solid rgba(0, 0, 0, 20%);
+    border-top: 0;
+    background-color: whitesmoke;
+  } 
+  
+  .video-data-container {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .video-channel-data {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .views-date{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+  
+  .video-info h3{
+    font-family: var(--Font);
+    font-weight: bold;
+    font-size: 15px;
+  }
+  
+  .channel-info p, span{
+    font-family: var(--Font);
+    font-weight: lighter;
+    font-size: 13px;
+  }
+
+
+  .views::after {
+    content: attr(views);
+    content: attr(views)
+  }
+  
+  .days::after {
+    content: attr(daysNumber);
+  }
+  
+  .channel-name::after {
+    content: attr(channel);
+  }
+
+
+  .separating-line {
+    width: var(--dominant-area-width);
+    margin-left: var(--sideBarSize);
+  }
+  
+  .separating-line hr{
+    margin-top: 10px;
+    border: 0.1px solid rgba(0, 0, 0, 30%);
+    border-radius: 0;
+  }
+  
+  
+  /* -----------Rounded icons buttons-------------- */
+  
+  .rounded-icon-category-parent{
+    display: flex;
+    width: 90vw;
+    gap: 20px;
+    margin-top: 10px;
+  }
+  
+  .rounded-category{
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 25%);
+    font-family: var(--Font);
+    font-weight: lighter;
+    font-size: 14px;
+    padding: 4px 10px;
+    border-radius: 190px;
+  }
+
+
+  /* making Layout Responsive with media queries */
+
+@media screen and (max-width: 430px) {
+    .sidebar{
+      display: none;
+    }
+  
+    .header-item2, .side-bar{
+      display: none;
+    }
+
+    .main-section, .videos-section{
+        justify-content: center;
+    }
+  
+    .header-content {
+      justify-content: space-between;
+    }
+  }
