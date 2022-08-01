@@ -8,7 +8,7 @@ const allVideos = database();
 // Homepage
 
 document.getElementsByClassName("header-item1")[0].addEventListener("click", () => {
-    window.location.replace("/html/index.html");
+    window.location.replace("index.html");
 })
 
 
