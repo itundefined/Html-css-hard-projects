@@ -130,8 +130,6 @@ sup {
 
 .main-section{
   display: flex;
-  /* gap: 20px; */
-  flex-wrap: wrap;
 }
 
 
@@ -263,6 +261,7 @@ sup {
 
   .main-section{
     justify-content: center;
+    flex-wrap: wrap;
   }
 
   .header-item2, .side-bar{
