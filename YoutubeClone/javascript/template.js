@@ -8,7 +8,7 @@ const allVideos = database();
 // Homepage
 
 document.getElementsByClassName("header-item1")[0].addEventListener("click", () => {
-    window.location.replace("index.html");
+    window.location.href = "index.html";
 })
 
 
@@ -176,7 +176,7 @@ function VideoWidget() {
             localStorage.setItem("linkToTheVideo", element.link)
             localStorage.setItem("title", element.title)
             localStorage.setItem("description", element.description)
-            window.location.replace("videoView.html");
+            window.location.href = "videoView.html";
         })
     })
 }
