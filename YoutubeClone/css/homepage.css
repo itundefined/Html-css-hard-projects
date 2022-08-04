@@ -168,6 +168,12 @@ sup {
 
 /* Mainly Video Widget styling */
 
+.thumbnail-container{
+  width: 300px;
+  height: 180px;
+  background-color: gray;
+}1 
+
 .video-element:hover{
     cursor: pointer;
     transition: 1000ms;
