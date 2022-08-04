@@ -168,11 +168,18 @@ sup {
 
 /* Mainly Video Widget styling */
 
+
 .thumbnail-container{
   width: 300px;
   height: 180px;
   background-color: gray;
-}1 
+}
+
+.video-element{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 
 .video-element:hover{
     cursor: pointer;
@@ -270,6 +277,15 @@ sup {
 @media screen and (max-width: 430px) {
     .sidebar{
       display: none;
+    }
+
+    .profile-image-container, .profile-image-container img{
+      width: 30px;
+      height: 30px;
+    }
+
+    .main-container{
+      padding-left: 10px;
     }
   
     .header-item2, .side-bar{
