@@ -9,7 +9,7 @@
 
 :root {
     --dominatingSize: calc(100vw - 330px);
-    --sideBarSize: calc(100vw - var(--dominatingSize));
+    /* --sideBarSize: calc(100vw - var(--dominatingSize)); */
     --Font: 'Roboto', sans-serif;
     --videoWidth: 100%;
     --VideoHeight: calc(var(--videoWidth) - 70%);
@@ -154,8 +154,10 @@ sup {
 
 /* Videos element style */
 .VideoView{
-  width: var(--dominatingSize);
+  width: 100%;
   min-width: 300px;
+  box-sizing: border-box;
+  padding: 10px;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -170,10 +172,11 @@ sup {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 60%;
+  width: 100%;
   min-width: 300px;
   background-color: white;
   align-items: flex-start;
+  margin: 10px 0 20px 0;
 }
 
 .bottombar, p, h3{
@@ -190,7 +193,6 @@ sup {
 /* Mainly suggest video section Video Widget styling */
 
 .videos-section {
-  width: var(--sideBarSize);
   background-color: white;
   display: flex;
   flex-wrap: wrap;
