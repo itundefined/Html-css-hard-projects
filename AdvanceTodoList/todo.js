@@ -224,9 +224,5 @@ function hideTitle(hide, show) {
     const hideEelment = document.getElementsByClassName(hide)[0];
     const showElement = document.getElementsByClassName(show)[0];
     hideEelment.style.display = "none"
-    showElement.style.display = "block"
+    showElement.style.display = "flex"
 }
-
-
-
-
