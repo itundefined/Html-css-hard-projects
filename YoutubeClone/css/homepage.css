@@ -271,6 +271,10 @@ sup {
     border-radius: 190px;
   }
 
+  .phoneBar{
+    display:none
+  }
+
 
   /* making Layout Responsive with media queries */
 
@@ -299,4 +303,26 @@ sup {
     .header-content {
       justify-content: space-between;
     }
+
+    body{
+      margin-bottom: 50px;
+    }
+
+    .phoneBar{
+      display: block;
+      box-sizing: border-box;
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      background-color: rgba(255, 255, 255);
+      border-top: solid 0.25px rgba(0, 0, 0, 30%);
+      padding:5px;
+    }
+
+    .phonebarIconContainer{
+      display: flex;
+      justify-content: space-around
+    }
+
   }
