@@ -166,6 +166,25 @@ sup {
   padding: 10px;
 }
 
+.comments{
+  box-sizing: border-box;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.comments p{
+  margin-top: 5px;
+  font-family: var(--Font);
+  font-weight: lighter;
+  color: gray;
+  font-size: 13px;
+}
+
+.comments hr{
+  border: solid 0.25px rgba(0, 0, 0, 20%);
+}
+
+
 
 /* styling of the bottom bar */
 
