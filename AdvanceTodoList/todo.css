@@ -15,6 +15,7 @@
     margin: auto;
     margin-top: 50px;
     width: var(--containerWidth);
+    margin-bottom: 50px;
 }
 
 .inputs{
@@ -25,7 +26,10 @@
 }
 
 .inputs textarea {
+    box-sizing: border-box;
+    padding: 10px 20px;
     width: 100%;
+    resize: none;
     font-family: var(--Font);
     font-weight: lighter;
     font-size: large;
@@ -207,8 +211,11 @@
 }
 
 .styling textarea{
+    box-sizing: border-box;
+    padding: 5px;
     font-family: var(--Font);
     width: 80%;
+    resize: none;
     font-weight: lighter;
     font-size: var(--FontSize);
     letter-spacing: var(--letterSpacing);
@@ -216,15 +223,25 @@
 
 
 .title-add{
+    box-sizing: border-box;
     display: none;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--Font);
+    font-size: var(--FontSize);
+    letter-spacing: var(--letterSpacing);
 }
 
-.title-add span{
+.title-add #label{
+    text-decoration:underline;
+}
+
+.title-add span#close-title{
     cursor: pointer;
     transition: 500ms;
 }
 
-.title-add span:hover{
+.title-add span#close-title:hover{
     transition: 500ms;
     transform: rotate(-90deg);
 }
