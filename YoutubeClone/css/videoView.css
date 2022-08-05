@@ -198,13 +198,31 @@ sup {
   align-items: flex-start;
 }
 
-.bottombar, p, h3{
+.bottombar, h3{
   font-family: var(--Font);
 }
 
 
 .bottombar h3{
   font-weight: bold;
+}
+
+.bottombar span, p{
+  font-family: var(--Font);
+  margin: 0;
+  padding: 0;
+}
+
+.bottombar span{
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.bottombar div{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
 }
 
 
@@ -296,6 +314,8 @@ sup {
 }
 
 
+
+
 @media screen and (max-width: 430px) {
 
   .main-section{
@@ -307,6 +327,14 @@ sup {
     display: none;
   }
 
+  .video-element:hover{
+    transform: scale(1);
+  }
+  .video-element:hover .video-data-container{
+    border: none;
+    background-color: white;
+  } 
+
   .profile-image-container, .profile-image-container img{
     width: 30px;
     height: 30px;
@@ -317,6 +345,23 @@ sup {
     margin-bottom: 30px;
   }
 
+  .phoneBar{
+    display: block;
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255);
+    border-top: solid 0.25px rgba(0, 0, 0, 30%);
+    padding:7px;
+  }
+
+  .phonebarIconContainer{
+    display: flex;
+    justify-content: space-around
+  }
+
   #videoToShow{
     width: 100%;
     height: calc(80vw);
@@ -324,5 +369,7 @@ sup {
 
   .header-content {
     justify-content: space-between;
+    box-sizing: border-box;
+    padding: 0 5px;
   }
 }
