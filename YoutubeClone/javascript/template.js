@@ -12,19 +12,21 @@ document.getElementsByClassName("header-item1")[0].addEventListener("click", () 
 })
 
 
+
 // Changing the iframe src 
 function iframeHandler() {
-    let linkparaVideo, titleText, descriptionText;
+    let linkparaVideo, titleText, descriptionText, descriptionMoreText;
     if(localStorage.getItem("linkToTheVideo"))
     {
         linkparaVideo = localStorage.getItem("linkToTheVideo");
         titleText = localStorage.getItem("title");
-        descriptionText = localStorage.getItem("description");
+        descriptionText = localStorage.getItem("description").slice(0, 20) + "...";
+        descriptionMoreText = localStorage.getItem("description")
     }
     else{
         linkparaVideo = "https://www.youtube.com/embed/DDAhcohJQck";
         titleText = "Welcome";
-        descriptionText = "Thanks for visiting this demo project"
+        descriptionText = "Thanks for visiting this demo project".slice(0, 20)
     }
 
     const iframe = document.getElementById("videoToShow");
@@ -40,13 +42,40 @@ function iframeHandler() {
     const titleData = document.createTextNode(titleText);
     const descriptionData = document.createTextNode(descriptionText);
 
+    // creating a div for button and description
+
+    const lineAndmore = document.createElement("div");
+
+
+    // More button
+    const more = document.createElement("span");
+    const moreData = document.createTextNode("more");
+    more.appendChild(moreData);
+
+    more.addEventListener("click", ()=>{
+        let currentLength = description.innerText.length;
+        let fullDesriptionLength = descriptionMoreText.length;
+        if (currentLength < fullDesriptionLength) {
+            description.innerText = descriptionMoreText;
+            more.innerText = "Less";
+        } 
+        else if(currentLength >= fullDesriptionLength) {
+            description.innerText = descriptionText;
+            more.innerText = "more";
+        }
+        
+    })
+
+
     // Appending
 
     title.appendChild(titleData);
     description.appendChild(descriptionData);
 
     bottomBar.appendChild(title);
-    bottomBar.appendChild(description);
+    lineAndmore.appendChild(description);
+    lineAndmore.appendChild(more);
+    bottomBar.appendChild(lineAndmore);
 }
 
 try {
