@@ -39,7 +39,7 @@
 } 
 
   
-#AddTheTask, #editnow{
+#AddTheTask, #editnow, #deleteAll{
     width: 100px;
     height: 50px;
     background-color: white;
@@ -53,7 +53,7 @@
     transition: 500ms;
 }
 
-#AddTheTask{
+#AddTheTask, #deleteAll{
     position: relative;
     z-index: 1;
 }
@@ -72,36 +72,42 @@
     transition: transform 500ms ease-in-out;
 }
 
-#AddTheTask:hover::before{
+#deleteAll::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    background-color: rgba(255, 0, 0, 80%); /*Becuase the color is getting changed here from add the task*/
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 500ms ease-in-out;
+}
+
+#AddTheTask:hover::before, #deleteAll:hover::before{
     transform: scaleX(1);
     transition: transform 500ms ease-in-out;
 }
 
-#AddTheTask:hover{
+#AddTheTask:hover, #deleteAll:hover{
     color: whitesmoke;
 }
 
 
-#editnow:hover{
+#editnow:hover, .inputs button:hover{
     transition: 500ms;
     transform: scale(1.2);    
 }
 
-.inputs button:hover {
-    transition: 500ms;
-    transform: scale(1.2);
-}
 
 .spans-container{
     display: flex;
     flex-direction: column;
+    position: relative;
     margin-top: 50px;
-}
-
-
-.spans-container{
     padding: 10px 15px;
-    margin-top: 20px;
     border: solid 1px rgba(0, 0, 0, 10%);
     border-radius: 25px;
     font-family: var(--Font);
@@ -109,11 +115,45 @@
     font-size: var(--FontSize);
     font-weight: bolder;
     box-shadow: 0 0 20px rgb(0 0 0 / 10%);
+    transition: 500ms;
+    bottom: 3px solid rgba(255, 0, 0, 0%);
+    bottom: 3px solid rgba(0, 0, 255, 0%);
+    cursor: move;
 }
 
 .hrLine{
     border: solid 0.20px rgba(0, 0, 0, 20%);
 }
+
+
+
+/* delete multiple button ------*/
+
+.multipleDeletion{
+    width: var(--containerWidth);
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    gap: 5px;
+}
+
+.multipleDeletion span{
+    cursor: pointer;
+}
+
+.multipleDeletion p{
+    font-family: var(--Font);
+    font-size: var(--FontSize);
+    letter-spacing: var(--letterSpacing);
+    transition: 500ms;
+    border-bottom: 0.25px solid rgba(0, 0, 0, 0%);
+}
+
+.multipleDeletion span:hover+p{
+    transition: 500ms;
+    border-bottom: 1px solid rgba(0, 0, 0, 100%);
+}
+
 
 
 .mainTaskSpan{
@@ -152,6 +192,7 @@
 }
 
 .updateIcon{
+    position: relative;
     cursor: pointer;
     margin: 0;
     padding: 0;
@@ -159,9 +200,12 @@
 }
 
 .deleteIcon{
+    position: relative;
     cursor: pointer;
     transition: 500ms;
 }
+
+
 
 .updateIcon:hover{
     transform: scale(1.10);
@@ -175,6 +219,16 @@
 }
 
 
+.deletionIndication{
+    transition: 500ms;
+    border: 1.50px solid rgba(255, 0, 0, 80%);
+}
+
+.updationIndication{
+    transition: 500ms;
+    border: 1.50px solid rgba(0, 255, 0, 90%);
+}
+
 
 .func-container {
     width: 100%;
@@ -183,18 +237,26 @@
     gap: 10px;
 }
 
+.remove-item{
+    transform: scale(1.10);
+    opacity: 0;
+}
 
 
 /* Now make the editable workable */
 
 .editable {
     display: none;
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     text-align: center;
     background-color: rgba(0, 0, 0, 55%);
     z-index: 2;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .styling span{
@@ -244,4 +306,51 @@
 .title-add span#close-title:hover{
     transition: 500ms;
     transform: rotate(-90deg);
+}
+
+
+/* DropBox styling-------------------------- */
+.dropbox{
+    transition: 500ms;
+    transform: translateX(-100vw);
+    background-color: rgba(0, 0, 0, 33%);
+    color: white;
+    width: var(--containerWidth);
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.toggleDropBox{
+    transform: translateX(0vw);
+}
+
+.menu-trigger{
+    transition: 500ms;
+    transform: rotateZ(0deg);
+}
+
+.rotate-it{
+    transform: rotateZ(225deg);
+}
+
+.dropbox p{
+    text-align: center;
+}
+
+.dropbox-func-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#dropbox-button-container{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dropbox-func-container *{
+    width: calc(100% / 3);
+    box-sizing: border-box;
 }
