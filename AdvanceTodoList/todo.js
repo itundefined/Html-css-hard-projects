@@ -29,6 +29,7 @@ function renderAllThetasks() {
             // Adding eventListener to hover and toggle the class
             containerForSpans.setAttribute("draggable", "true");
             containerForSpans.setAttribute("ondragstart", "drag(event)");
+            containerForSpans.setAttribute("ondragend", "stopDragged(event)")
 
             // Fetching the DropBox
             const DropBox = document.getElementsByClassName("dropbox")[0];
@@ -224,6 +225,12 @@ function allowDrop(ev) {
   
 function drag(ev) {
     tempdrag = ev.target;
+    tempdrag.classList.add("whileDragging")
+}
+
+function stopDragged(ev) {
+    tempdrag = ev.target;
+    tempdrag.classList.remove("whileDragging")
 }
 
 function drop(ev) {
