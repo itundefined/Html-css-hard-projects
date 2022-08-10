@@ -354,3 +354,7 @@
     width: calc(100% / 3);
     box-sizing: border-box;
 }
+
+.whileDragging{
+    background-color: rgba(0, 0, 0, 70%);
+}
