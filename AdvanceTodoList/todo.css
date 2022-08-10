@@ -286,6 +286,7 @@
 
 .title-add{
     box-sizing: border-box;
+    padding: 5px;
     display: none;
     align-items: center;
     gap: 10px;
@@ -308,6 +309,11 @@
     transform: rotate(-90deg);
 }
 
+
+.header-hide-element{
+    transition: 500ms;
+    opacity: 0%;
+}
 
 /* DropBox styling-------------------------- */
 .dropbox{
