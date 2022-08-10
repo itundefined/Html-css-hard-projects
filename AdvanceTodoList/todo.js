@@ -179,6 +179,47 @@ function deleteButton(element) {
 
 
 
+// Function 3 1/2  to delete Multiple tasks
+
+function deleteDropbox() {
+    const storedInfo = localStorage.getItem(databaseName)
+    // converting
+    const parsedArr = JSON.parse(storedInfo);
+    let elementsToDel = [];
+    
+    // fetching from the databaseName
+    let elementsFromData = [];
+
+    // FilteredArray
+    let filteredArray = [];
+
+    const dropboxElement = document.getElementsByClassName("dropbox")[0];
+
+    dropboxElement.classList.add("remove-item");
+
+    dropboxElement.childNodes.forEach((element)=>{
+        elementsToDel.push(element);
+    })
+    elementsToDel = elementsToDel.slice(3, elementsToDel.length)
+
+    elementsToDel.forEach(element => {
+        elementsFromData.push(parsedArr[parseInt(element.classList[1])]);
+    })
+
+    filteredArray = parsedArr.filter((x)=>{
+        if(!elementsFromData.includes(x))  {return x}
+    })
+
+    // changing from here
+    let jsonArr = JSON.stringify(filteredArray);
+    localStorage.setItem(databaseName, jsonArr)
+    setTimeout(() => {
+        location.reload();
+    }, 500);
+
+}
+
+
 // Function Fourth(4) To update the task and save it to the localStorage --------------------------
 
 let temp = [];  
