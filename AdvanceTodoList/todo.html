@@ -22,7 +22,6 @@
     </section>
 
     <!-- Main Section -->
-
     <section class="MainSection">
         <div class="inputs">
             <div class="title-cross">
@@ -41,6 +40,22 @@
 
             <textarea id="task" placeholder="Learning a new Language maybe...🥳" cols="30" rows="10"></textarea>
             <button id="AddTheTask" onclick="addTheTask()">Add</button>
+        </div>
+
+
+        <div class="dropbox">
+            <div class="dropbox-func-container">
+                <p></p>
+                <p>Drop Here</p>
+                <div id="dropbox-button-container"><button id="deleteAll">Delete</button></div>
+            </div>
+        </div>
+
+        <div class="multipleDeletion">
+            <span class="material-symbols-outlined menu-trigger" onclick="toggleDropBox();">
+                add
+                </span>
+                <p>Multiple Delete</p>
         </div>
 
         <div class="showtasks">
