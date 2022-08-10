@@ -280,8 +280,12 @@ function updateButton(element) {
 function hideTitle(hide, show) {
     const hideEelment = document.getElementsByClassName(hide)[0];
     const showElement = document.getElementsByClassName(show)[0];
-    hideEelment.style.display = "none"
-    showElement.style.display = "flex"
+    showElement.classList.remove("header-hide-element");
+    hideEelment.classList.add("header-hide-element")
+    setTimeout(() => {
+        hideEelment.style.display = "none"
+        showElement.style.display = "flex"
+    }, 500);
 }
 
 
