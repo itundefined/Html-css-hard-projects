@@ -1,4 +1,5 @@
 const databaseName = "testing1" //localDatabse name connected to the localStorage
+const themeHolder = "user-setting"
 
 const localdatabase = JSON.parse(localStorage.getItem(databaseName));
 
@@ -372,16 +373,31 @@ function toggleDropBox() {
 // Toggle Theme Changer Input
 
 function toggleTheme() {
+    const savedTheme = localStorage.getItem(themeHolder);
     const inputtogge = document.getElementsByClassName("toggle-theme")[0];
     const MainSection = document.getElementsByClassName("body")[0];
     const task = document.getElementsByClassName("spans-container");
     const [...AllTheTasks] = task;
     inputtogge.addEventListener('click', ()=>{
         MainSection.classList.toggle("dark");
+        if(MainSection.classList.length === 2) {
+            localStorage.setItem(themeHolder, "dark");
+        }
+        else{
+            localStorage.setItem(themeHolder, "white");
+        }
         AllTheTasks.forEach(element => {
             element.classList.toggle("spanDark");
         })
     })
+
+    if(savedTheme === "dark") {
+        MainSection.classList.toggle("dark");
+        document.getElementById("myCheck").checked = true;
+        AllTheTasks.forEach(element => {
+            element.classList.toggle("spanDark");
+        })
+    };
 }
 
 
