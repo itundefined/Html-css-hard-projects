@@ -354,3 +354,20 @@ function toggleDropBox() {
     menuTrigger.classList.toggle("rotate-it");
 }
 
+
+// Toggle Theme Changer Input
+
+function toggleTheme() {
+    const inputtogge = document.getElementsByClassName("toggle-theme")[0];
+    const MainSection = document.getElementsByClassName("body")[0];
+    const task = document.getElementsByClassName("spans-container");
+    const [...AllTheTasks] = task;
+    inputtogge.addEventListener('click', ()=>{
+        MainSection.classList.toggle("dark");
+        AllTheTasks.forEach(element => {
+            element.classList.toggle("spanDark");
+        })
+    })
+}
+
+toggleTheme();
