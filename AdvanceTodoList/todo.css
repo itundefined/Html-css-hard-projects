@@ -281,6 +281,9 @@
     letter-spacing: var(--letterSpacing);
 }
 
+.giveError{
+    border: 1px solid rgba(255, 0, 0, 80%) !important;
+}
 
 .title-add{
     box-sizing: border-box;
@@ -438,6 +441,7 @@
   .slider.round:before {
     border-radius: 50%;
   }
+
 
 
 
