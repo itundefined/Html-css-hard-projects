@@ -18,12 +18,20 @@
     <!-- Adding the Dark and light mode both-->
     <div class="toggle-input-container">
 
-        <span class="mode-indicator">Theme</span>
-        <!-- Rounded switch -->
-        <label class="switch">
-            <input class="toggle-theme" id="myCheck" type="checkbox">
-            <span class="slider round"></span>
-        </label>
+       <div class="themeNotifier">
+
+        <div class="themeContainer">
+            <div class="notifierElement lightTheme" onclick="toggleTheme('light')">
+                <span class="material-symbols-outlined">light_mode</span>
+                <p id="timeDate">date and time</p>
+            </div>
+    
+            <div class="notifierElement darkTheme" onclick="toggleTheme('dark')">
+                <span class="material-symbols-outlined">dark_mode</span>
+                <p id="timeDate">date and time</p>
+            </div>
+        </div>
+       </div>
     </div>
 
     
