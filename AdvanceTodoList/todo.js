@@ -372,34 +372,73 @@ function toggleDropBox() {
 
 // Toggle Theme Changer Input
 
-function toggleTheme() {
+function toggleTheme(themeChanger) {
+    const lightElement = document.getElementsByClassName("lightTheme")[0];
+    const darkTheme = document.getElementsByClassName("darkTheme")[0];
     const savedTheme = localStorage.getItem(themeHolder);
-    const inputtogge = document.getElementsByClassName("toggle-theme")[0];
-    const MainSection = document.getElementsByClassName("body")[0];
-    const task = document.getElementsByClassName("spans-container");
-    const [...AllTheTasks] = task;
-    inputtogge.addEventListener('click', ()=>{
-        MainSection.classList.toggle("dark");
-        if(MainSection.classList.length === 2) {
-            localStorage.setItem(themeHolder, "dark");
-        }
-        else{
-            localStorage.setItem(themeHolder, "white");
-        }
-        AllTheTasks.forEach(element => {
-            element.classList.toggle("spanDark");
-        })
-    })
 
-    if(savedTheme === "dark") {
-        MainSection.classList.toggle("dark");
-        document.getElementById("myCheck").checked = true;
-        AllTheTasks.forEach(element => {
-            element.classList.toggle("spanDark");
-        })
-    };
+
+    if(themeChanger === "dark") {
+        if(savedTheme !== "dark") {
+            darkTheme.style.transform = "rotateX(0deg)";   
+            lightElement.style.transform = "rotateX(-60deg)";
+            localStorage.setItem(themeHolder, 'dark')
+            setTimeout(() => {
+                location.reload();
+            }, 500);
+        }
+    }
+
+    else if(themeChanger === "light") {
+        if(savedTheme !== "light") {
+            darkTheme.style.transform = "rotateX(-60deg)";
+            lightElement.style.transform = "rotateX(0deg)";
+            localStorage.setItem(themeHolder, 'light')
+            setTimeout(() => {
+                location.reload();
+            }, 500);
+        }
+    }
+
 }
 
 
-// In order to addEventListener running the function
-toggleTheme();
+function ThemeSaver() {
+    const savedTheme = localStorage.getItem(themeHolder);
+    const MainSection = document.getElementsByClassName("body")[0];
+    const task = [...document.getElementsByClassName("spans-container")];
+    const lightElement = document.getElementsByClassName("lightTheme")[0];
+    const darkTheme = document.getElementsByClassName("darkTheme")[0];
+
+    // Dark
+    if(savedTheme === "dark")
+    {
+        darkTheme.style.transform = "rotateX(0deg)";   
+        lightElement.style.transform = "rotateX(-60deg)";
+        task.forEach(x => {
+            x.classList.add("spanDark");
+        });
+        MainSection.classList.add("dark")
+    }
+
+    else if(savedTheme === "light") {
+        darkTheme.style.transform = "rotateX(-60deg)";
+        lightElement.style.transform = "rotateX(0deg)";
+    }
+
+}
+
+ThemeSaver();
+
+
+// Adding the date and Time
+
+function dateAndtime() {
+    const element = [...document.querySelectorAll("#timeDate")];
+    const d = new Date();
+    element.forEach(x=>{x.innerText = `${d.getDate()} | ${d.getHours()} : ${d.getMinutes()} : ${d.getSeconds()}`})
+}
+
+setInterval(() => {
+    dateAndtime();
+}, 1000);
