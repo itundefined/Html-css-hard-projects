@@ -328,6 +328,7 @@
     padding: 10px;
 }
 
+
 .toggleDropBox{
     transform: translateX(0vw);
 }
@@ -379,71 +380,61 @@
     gap: 10px;
 }
 
-/* The switch - the box around the slider */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-  }
-  
-  /* Hide default HTML checkbox */
-  .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-  }
-  
-  /* The slider */
-  .slider {
-    position: absolute;
+/* themeNotifier */
+
+.themeNotifier{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transform: rotateY(15deg);
+}
+
+.notifierElement{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;    
+}
+
+.lightTheme span{
+    box-sizing: border-box;
+    background-color: rgba(238, 238, 155, 100);
+    border-right: 0.25px solid rgba(0, 0, 0, 50%);
+    padding: 5px;
+}
+
+.darkTheme span{
+    box-sizing: border-box;
+    background-color: #2E0249;
+    border-right: 0.25px solid rgba(0, 0, 0, 50%);
+    padding: 5px;
+}
+
+.darkTheme p, .lightTheme p {
+    padding: 5px;
+}
+
+.darkTheme{
+    background-color: gray;
+    color: white;
+    box-shadow: 10px 5px 10px rgba(255, 255, 255, 29%);
     cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  .slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
+    transform: rotateX(-60deg);
+    transition: all 500ms;
+}
+
+.lightTheme{
     background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-  }
-  
-  input:checked + .slider {
-    background-color: #2196F3;
-  }
-  
-  input:focus + .slider {
-    box-shadow: 0 0 1px #2196F3;
-  }
-  
-  input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
-    border-radius: 34px;
-  }
-  
-  .slider.round:before {
-    border-radius: 50%;
-  }
+    color: black;
+    cursor: pointer;
+    box-shadow: 15px 5px 10px rgb(0, 0, 0, 29%);
+    transition: all 500ms;
+}
 
 
-
+.themeContainer{
+    position: relative;
+}
 
   /* Dark Theme Colors */
 
