@@ -1,5 +1,4 @@
 const databaseName = "testing1" //localDatabse name connected to the localStorage
-const themeHolder = "user-setting"
 
 const localdatabase = JSON.parse(localStorage.getItem(databaseName));
 
@@ -128,45 +127,31 @@ function addTheTask() {
     let tempArray = [];
     // fetch the data from the inputs
     const title = document.getElementById("title").value;
-    const task = document.getElementById("task");
-    const taskvalue = task.value
-
-    let verify = taskvalue.split("");
-
-    verify = verify.filter((x)=>{
-        if(x !== " "){
-            return x;
-        }
-    })
-    
-    if(verify.length !== 0) {
-        // Creating the task object 
-        const taskAndTitle = {"title":title, "task":taskvalue};
+    const task = document.getElementById("task").value;
 
 
-        //checking whether if there is some data previously
+    // Creating the task object
+    const taskAndTitle = {"title":title, "task":task};
 
-        const oldData = localStorage.getItem(databaseName);
 
-        // converting
-        const parsedArr = JSON.parse(oldData);
+    //checking whether if there is some data previously
 
-        if(parsedArr) {
-            tempArray.push(...parsedArr);
-            tempArray.push(taskAndTitle);
-            let jsonArr = JSON.stringify(tempArray);
-            localStorage.setItem(databaseName, jsonArr)
-            location.reload();
-        }
-        else{
-            let jsonArr = JSON.stringify(tempArray);
-            localStorage.setItem(databaseName, jsonArr)
-            location.reload();
-        }
+    const oldData = localStorage.getItem(databaseName);
+
+    // converting
+    const parsedArr = JSON.parse(oldData);
+
+    if(parsedArr) {
+        tempArray.push(...parsedArr);
+        tempArray.push(taskAndTitle);
+        let jsonArr = JSON.stringify(tempArray);
+        localStorage.setItem(databaseName, jsonArr)
+        location.reload();
     }
-
     else{
-        task.classList.add("giveError");
+        let jsonArr = JSON.stringify(tempArray);
+        localStorage.setItem(databaseName, jsonArr)
+        location.reload();
     }
 }
 
@@ -372,73 +357,17 @@ function toggleDropBox() {
 
 // Toggle Theme Changer Input
 
-function toggleTheme(themeChanger) {
-    const lightElement = document.getElementsByClassName("lightTheme")[0];
-    const darkTheme = document.getElementsByClassName("darkTheme")[0];
-    const savedTheme = localStorage.getItem(themeHolder);
-
-
-    if(themeChanger === "dark") {
-        if(savedTheme !== "dark") {
-            darkTheme.style.transform = "rotateX(0deg)";   
-            lightElement.style.transform = "rotateX(-60deg)";
-            localStorage.setItem(themeHolder, 'dark')
-            setTimeout(() => {
-                location.reload();
-            }, 500);
-        }
-    }
-
-    else if(themeChanger === "light") {
-        if(savedTheme !== "light") {
-            darkTheme.style.transform = "rotateX(-60deg)";
-            lightElement.style.transform = "rotateX(0deg)";
-            localStorage.setItem(themeHolder, 'light')
-            setTimeout(() => {
-                location.reload();
-            }, 500);
-        }
-    }
-
-}
-
-
-function ThemeSaver() {
-    const savedTheme = localStorage.getItem(themeHolder);
+function toggleTheme() {
+    const inputtogge = document.getElementsByClassName("toggle-theme")[0];
     const MainSection = document.getElementsByClassName("body")[0];
-    const task = [...document.getElementsByClassName("spans-container")];
-    const lightElement = document.getElementsByClassName("lightTheme")[0];
-    const darkTheme = document.getElementsByClassName("darkTheme")[0];
-
-    // Dark
-    if(savedTheme === "dark")
-    {
-        darkTheme.style.transform = "rotateX(0deg)";   
-        lightElement.style.transform = "rotateX(-60deg)";
-        task.forEach(x => {
-            x.classList.add("spanDark");
-        });
-        MainSection.classList.add("dark")
-    }
-
-    else if(savedTheme === "light") {
-        darkTheme.style.transform = "rotateX(-60deg)";
-        lightElement.style.transform = "rotateX(0deg)";
-    }
-
+    const task = document.getElementsByClassName("spans-container");
+    const [...AllTheTasks] = task;
+    inputtogge.addEventListener('click', ()=>{
+        MainSection.classList.toggle("dark");
+        AllTheTasks.forEach(element => {
+            element.classList.toggle("spanDark");
+        })
+    })
 }
 
-ThemeSaver();
-
-
-// Adding the date and Time
-
-function dateAndtime() {
-    const element = [...document.querySelectorAll("#timeDate")];
-    const d = new Date();
-    element.forEach(x=>{x.innerText = `${d.getDate()} | ${d.getHours()} : ${d.getMinutes()} : ${d.getSeconds()}`})
-}
-
-setInterval(() => {
-    dateAndtime();
-}, 1000);
+toggleTheme();
