@@ -1,4 +1,5 @@
 const databaseName = "testing1" //localDatabse name connected to the localStorage
+const themeHolder = "user-setting"
 
 const localdatabase = JSON.parse(localStorage.getItem(databaseName));
 
@@ -127,31 +128,45 @@ function addTheTask() {
     let tempArray = [];
     // fetch the data from the inputs
     const title = document.getElementById("title").value;
-    const task = document.getElementById("task").value;
+    const task = document.getElementById("task");
+    const taskvalue = task.value
+
+    let verify = taskvalue.split("");
+
+    verify = verify.filter((x)=>{
+        if(x !== " "){
+            return x;
+        }
+    })
+    
+    if(verify.length !== 0) {
+        // Creating the task object 
+        const taskAndTitle = {"title":title, "task":taskvalue};
 
 
-    // Creating the task object
-    const taskAndTitle = {"title":title, "task":task};
+        //checking whether if there is some data previously
 
+        const oldData = localStorage.getItem(databaseName);
 
-    //checking whether if there is some data previously
+        // converting
+        const parsedArr = JSON.parse(oldData);
 
-    const oldData = localStorage.getItem(databaseName);
-
-    // converting
-    const parsedArr = JSON.parse(oldData);
-
-    if(parsedArr) {
-        tempArray.push(...parsedArr);
-        tempArray.push(taskAndTitle);
-        let jsonArr = JSON.stringify(tempArray);
-        localStorage.setItem(databaseName, jsonArr)
-        location.reload();
+        if(parsedArr) {
+            tempArray.push(...parsedArr);
+            tempArray.push(taskAndTitle);
+            let jsonArr = JSON.stringify(tempArray);
+            localStorage.setItem(databaseName, jsonArr)
+            location.reload();
+        }
+        else{
+            let jsonArr = JSON.stringify(tempArray);
+            localStorage.setItem(databaseName, jsonArr)
+            location.reload();
+        }
     }
+
     else{
-        let jsonArr = JSON.stringify(tempArray);
-        localStorage.setItem(databaseName, jsonArr)
-        location.reload();
+        task.classList.add("giveError");
     }
 }
 
@@ -358,16 +373,33 @@ function toggleDropBox() {
 // Toggle Theme Changer Input
 
 function toggleTheme() {
+    const savedTheme = localStorage.getItem(themeHolder);
     const inputtogge = document.getElementsByClassName("toggle-theme")[0];
     const MainSection = document.getElementsByClassName("body")[0];
     const task = document.getElementsByClassName("spans-container");
     const [...AllTheTasks] = task;
     inputtogge.addEventListener('click', ()=>{
         MainSection.classList.toggle("dark");
+        if(MainSection.classList.length === 2) {
+            localStorage.setItem(themeHolder, "dark");
+        }
+        else{
+            localStorage.setItem(themeHolder, "white");
+        }
         AllTheTasks.forEach(element => {
             element.classList.toggle("spanDark");
         })
     })
+
+    if(savedTheme === "dark") {
+        MainSection.classList.toggle("dark");
+        document.getElementById("myCheck").checked = true;
+        AllTheTasks.forEach(element => {
+            element.classList.toggle("spanDark");
+        })
+    };
 }
 
+
+// In order to addEventListener running the function
 toggleTheme();
