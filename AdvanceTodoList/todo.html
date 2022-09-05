@@ -32,7 +32,7 @@
     <section class="editable">
         <div class="styling">
             <textarea id="editable-input" placeholder="Edit..." cols="30" rows="10"></textarea>
-            <button id="editnow" onclick="updateTheTask()">Confirm</button>
+            <button id="editnow" onclick="todohelper.updateTheTask()">Confirm</button>
         </div>
     </section>
 
@@ -41,20 +41,20 @@
         <div class="inputs">
             <div class="title-cross">
                 <textarea id="title" placeholder="What Would be the Title ? 🤔" cols="30" rows="1"></textarea>
-                <span class="material-symbols-outlined" id="close-title" onclick="hideTitle('title-cross', 'title-add')">
+                <span class="material-symbols-outlined" id="close-title" onclick="todohelper.hideTitle('title-cross', 'title-add')">
                     close
                     </span>
             </div>
 
             <div class="title-add">
                 <span id="label">Add the title</span>
-                <span class="material-symbols-outlined" id="close-title" onclick="hideTitle('title-add', 'title-cross')">
+                <span class="material-symbols-outlined" id="close-title" onclick="todohelper.hideTitle('title-add', 'title-cross')">
                     add
                     </span>
             </div>
 
             <textarea id="task" placeholder="Learning a new Language maybe...🥳" cols="30" rows="10"></textarea>
-            <button id="AddTheTask" onclick="addTheTask()">Add</button>
+            <button id="AddTheTask" onclick="todohelper.addTheTask()">Add</button>
         </div>
 
 
@@ -62,12 +62,12 @@
             <div class="dropbox-func-container">
                 <p></p>
                 <p>Drop Here</p>
-                <div id="dropbox-button-container"><button onclick="deleteDropbox()" id="deleteAll">Delete</button></div>
+                <div id="dropbox-button-container"><button onclick="todohelper.deleteDropbox()" id="deleteAll">Delete</button></div>
             </div>
         </div>
 
         <div class="multipleDeletion">
-            <span class="material-symbols-outlined menu-trigger" onclick="toggleDropBox();">
+            <span class="material-symbols-outlined menu-trigger" onclick="todohelper.toggleDropBox();">
                 add
                 </span>
                 <p>Multiple Delete</p>
