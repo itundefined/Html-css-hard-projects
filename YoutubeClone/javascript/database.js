@@ -4,7 +4,7 @@
 
 
 export function database()  {
-    const videos = [{name:"Tushar Sharma", title:"Front-end Development", link:"https://www.youtube.com/embed/DDAhcohJQck", description:"Thanks for Watching and your support This is codeoneb and let's see if i made it better or not"},
+    const videos = [{name:"Tushar Sharma", title:"Front-end Development", link:"https://www.youtube.com/embed/DDAhcohJQck", description:"This is codeoneb and let's see if i made it better or not"},
      
     {name:"Tushar Sharma", title:"Back-end Development", link:"https://www.youtube.com/embed/rqNG5pdz6UY", description:"Thanks for Watching and your support pls share the video that will help my channel to grow :) ill keep posting these kinda videos in order to help other beginner developers"},
      
