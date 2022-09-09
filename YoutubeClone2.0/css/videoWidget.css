@@ -1,0 +1,39 @@
+.thumbnailContainer{
+    max-width: 300px;
+    max-height: 200px;
+    width: 300px;
+    height: 200px;
+    background-color: gray;
+}
+
+.videoDetails{
+    font-family: var(--font);
+    font-size: var(--font-size);
+    display: flex;
+    gap: 13px;
+    margin-top: 5px;
+}
+
+.channelImage{
+    max-width: 40px;
+    max-height: 40px;
+    width: 40px;
+    height: 40px;
+    background-color: gray;
+    border-radius: 190px;
+}
+
+.channelImage img{
+    border-radius: 190px;
+}
+
+.video-Detail-Description{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.video-Detail-Description h1{
+    font-weight: 400;
+    font-size: var(--font-big)
+}

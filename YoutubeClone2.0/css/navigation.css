@@ -1,0 +1,45 @@
+/* Layout the Whole section--------------------------------------------------------  */
+
+
+.navigation-sidebar{
+    display: flex;
+    flex-direction: column;
+    gap: var(--navigationGap);
+    background-color: whitesmoke;
+    padding: 0 calc(var(--globalPadding) - 10px);
+}
+
+
+.navigation-sidebar span{
+    padding: 6px 0;
+}
+
+.widgetContainer p{
+    font-family: var(--font);
+    font-size: var(--font-size);
+}
+
+.widgetContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* Styling Individual Items----------------------------------------------------------- */
+
+.widget1:hover{
+    background-color: var(--color-hover);
+}
+
+.widget2:hover{
+    background-color: var(--color-hover);
+}
+
+.widget3:hover{
+    background-color: var(--color-hover);
+}
+
+.widget4:hover{
+    background-color: var(--color-hover);
+}

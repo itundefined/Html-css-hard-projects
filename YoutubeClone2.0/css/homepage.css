@@ -1,0 +1,141 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --font: 'Roboto', sans-serif;
+    --globalPadding: 25px;
+    --navigationGap: 15px;
+    --headerGap: 20px;
+    --color-hover: rgba(255,255,255,0.9);
+    --font-size: 12px;
+    --font-big: 17px;
+    --home-page-videos-padding: 10px;
+}
+
+
+
+/* Layout the Whole section--------------------------------------------------------  */
+
+.allvideoSection{
+    margin: 20px;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.allVideos{
+    display: flex;
+    height: 100vh;
+}
+
+
+.videos-container{
+    width: 100%;
+}
+
+
+
+/* Styling Individual Items----------------------------------------------------------- */
+
+.material-symbols-outlined{
+    cursor: pointer;
+}
+
+
+.recommendations-icon{
+    background-color: whitesmoke;
+    width: 100%;
+}
+
+
+.recommendationsWrapper{
+    padding: 7px;
+    display: flex;
+    gap: 15px;
+    padding-left: 30px;
+}
+
+#recommendationsButton{
+    font-family: var(--font);
+    border: 0.25px solid rgba(0, 0, 0, 0.3);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px;
+    font-weight: 400;
+    padding: 3px var(--home-page-videos-padding);
+    background-color: white;
+}
+
+
+hr{
+    border: none;
+    height: 0.25px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+
+.videoContainer{
+    transition: all 500ms ease-in-out;
+}
+
+.videoContainer:hover{
+    cursor: pointer;
+    transition-delay: 1.5s;
+    transform: scale(1.1);
+    background-color: whitesmoke;
+    border: 0.25px solid rgba(0, 0, 0, 0.3);
+}
+
+
+.mobile-navigation{
+    display: none;
+}
+
+
+@media screen and (max-width: 480px) {
+    .navigation-sidebar{
+        display: none !important;
+    }
+
+    .mobile-navigation{
+        display: flex;
+        position: fixed;
+        justify-content: space-around;
+        background-color: whitesmoke;
+        border: 0.25px solid rgba(0, 0, 0, 0.3);
+        align-items: center;
+        bottom: 0;
+        left:0;
+        right: 0;
+    }
+
+    .searchContainer{
+        display: none !important;
+    }
+
+    .recommendationsWrapper{
+        overflow: scroll;
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+    }
+
+    .allvideoSection{
+        justify-content: center;
+    }
+
+    .headerSubcontainer{
+        gap: 5px !important;
+    }
+
+    .header{
+        padding: 10px 10px !important;
+    }
+
+    .left span{
+        display: none;
+    }
+}

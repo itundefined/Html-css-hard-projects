@@ -1,0 +1,79 @@
+/* Layout the Whole section--------------------------------------------------------  */
+
+/* header styling */
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: whitesmoke;
+    padding: 10px var(--globalPadding);
+}
+
+.header div{
+    display: flex;
+    align-items: center;
+}
+
+.headerSubcontainer{
+    gap: 20px;
+}
+
+
+
+/* Styling Individual Items----------------------------------------------------------- */
+
+/* youtube icon */
+.icon{
+    max-width: 100px;
+}
+
+/* Profile Image container */
+.profileImgContainer{
+    max-height: 40px;
+    max-width: 40px;
+    width: 40px;
+    height: 40px;
+    background-color: gray;
+    border-radius: 190px;
+}
+
+
+
+/* Profile pic */
+#profilePic{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100%;    
+}
+
+
+
+/* Search Bar */
+
+.searchContainer{
+    min-height: 30px;
+    width: fit-content;
+    background-color: gray;
+}
+
+#search{
+    max-width: 350px;
+    width: 350px;
+    height: 30px;
+    padding: 5px;
+}
+
+#search:focus{
+    outline: none !important;
+    border:1px solid rgb(51,102,204);
+}
+
+#searchButton{
+    min-height: 30px;
+    transform: translateY(2px);
+    padding: 2px 10px;
+    color: white;
+    font-weight: 100;
+}
+
