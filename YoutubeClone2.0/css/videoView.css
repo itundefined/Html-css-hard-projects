@@ -8,6 +8,9 @@
     --font: 'Roboto', sans-serif;
     --globalPadding: 25px;
     --headerGap: 20px;
+    --font: 'Roboto', sans-serif;
+    --font-size: 12px;
+    --font-big: 17px;
 }
 
 
@@ -38,9 +41,40 @@ main{
     gap: 20px;
 }
 
+.videosDetails{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: var(--font);
+}
+
+.videosDetails h1{
+    font-size: var(--font-big);
+}
+
+.videosDetails span{
+    font-size: calc(var(--font-size) + 2px)
+}
+
+#VideosDesc{
+    color: black;
+    cursor: pointer;
+    border: none;
+    font-weight: bold;
+}
+
+
+.separator{
+    margin-top: 30px;
+    text-align: center;
+    color: rgb(148, 148, 148);
+}
+
 .videoContainer{
     transition: all 500ms ease-in-out;
 }
+
+
 
 .videoContainer:hover{
     cursor: pointer;
@@ -58,6 +92,9 @@ main{
 .material-symbols-outlined{
     cursor: pointer;
 }
+
+
+
 
 
 @media screen and (max-width: 500px) {

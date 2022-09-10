@@ -92,6 +92,7 @@ class main {
       let description = localStorage.getItem("description");
       let linkToTheVideo = localStorage.getItem("linkToTheVideo");
       const iframe = document.querySelector(".iframe");
+      const iframeVideoDetails = document.querySelector(".videosDetails");
       let html;
       if(!title || !description || !linkToTheVideo) {
         html = `<iframe src="https://www.youtube.com/embed/w-ODm6AUayE" frameborder="0" allow="autoplay" allowfullscreen></iframe>`
@@ -101,7 +102,46 @@ class main {
         html = `<iframe src="${linkToTheVideo}" frameborder="0" allow="autoplay" allowfullscreen></iframe>`
       }
       
+      let videoDetailsHtml = `<h1>${title}</h1>
+                              <div><span id="description">${description}</span> <span id="VideosDesc">more</span></div>`
+
+
+
       iframe.insertAdjacentHTML("afterbegin", html)
+      iframeVideoDetails.insertAdjacentHTML("afterbegin", videoDetailsHtml);
+
+      const iframeVideoDetailsSpecific = document.querySelector(".videosDetails span");
+      let lessText = iframeVideoDetailsSpecific.innerText.slice(0, 20);
+      lessText+= "..."
+      // Setting Less Text
+      iframeVideoDetailsSpecific.innerText = lessText;
+
+      this.stylingDescription();
+    }
+
+    stylingDescription() {
+      // Adding a link along with the EventListener
+      let description = localStorage.getItem("description");
+      let descriptionHandler = document.querySelector("#VideosDesc");
+      
+      descriptionHandler.addEventListener("click", () => {
+        let currentDescription = document.querySelector("#description");
+        let currentDescriptionText = currentDescription.innerText;
+        let drawerButton = document.querySelector("#VideosDesc");
+        
+
+        if(currentDescriptionText.slice(currentDescriptionText.length - 3, currentDescriptionText.length) === "..."){
+          currentDescription.innerText = description;
+          drawerButton.innerText = "less";
+        }
+
+        else{
+          currentDescription.innerText = description.slice(0, 20);
+          currentDescription.innerText += "...";
+          drawerButton.innerText = "more";
+        }
+        
+      });
     }
     
 }
