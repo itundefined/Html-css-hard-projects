@@ -6,7 +6,10 @@ class todo{
 
         let tempdrag;
         let temp = [];
+
+        let alreadyPrinted = [];
         
+        this.alreadyPrinted = alreadyPrinted;
         this.temp = temp;
         this.tempdrag = tempdrag;
         this.databaseName = databaseName;
@@ -31,6 +34,9 @@ class todo{
         const parsedArr = JSON.parse(str);
         if(parsedArr) {
             parsedArr.map((element, index) => {
+
+                if(!this.alreadyPrinted.includes(index)) {
+                    
                 // Create html now
                 const containerForSpans = document.createElement("div");
                 const containerForFunctionIcons = document.createElement("div")
@@ -127,6 +133,9 @@ class todo{
                 deleteIcon.addEventListener("mouseout", ()=>{
                     this.deletionIndication(containerForSpans);
                 })
+                }
+
+                this.alreadyPrinted.push(index);
     
             })
         }
@@ -137,9 +146,11 @@ class todo{
         let databaseName = this.databaseName;
         let tempArray = [];
         // fetch the data from the inputs
-        const title = document.getElementById("title").value;
-        const task = document.getElementById("task");
-        const taskvalue = task.value
+        const title = document.querySelector("#title");
+        const task = document.querySelector("#task");
+
+        const taskvalue = task.value;
+        const titlevalue = title.value;
     
         let verify = taskvalue.split("");
     
@@ -151,7 +162,7 @@ class todo{
         
         if(verify.length !== 0) {
             // Creating the task object 
-            const taskAndTitle = {"title":title, "task":taskvalue};
+            const taskAndTitle = {"title":titlevalue, "task":taskvalue};
     
     
             //checking whether if there is some data previously
@@ -166,18 +177,22 @@ class todo{
                 tempArray.push(taskAndTitle);
                 let jsonArr = JSON.stringify(tempArray);
                 localStorage.setItem(databaseName, jsonArr)
-                location.reload();
             }
             else{
                 let jsonArr = JSON.stringify(tempArray);
                 localStorage.setItem(databaseName, jsonArr)
-                location.reload();
             }
+
+            this.renderAllThetasks(this.databaseName);
+            title.value = "";
+            task.value = "";
         }
     
         else{
             task.classList.add("giveError");
         }
+        
+        
     }
 
 
