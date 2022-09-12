@@ -36,11 +36,24 @@
         </div>
     </section>
 
+    <!-- Are you Sure prompt -->
+    <section class="reassuring">
+        <div class="reassuringStyling">
+                <span>are you sure?</span>
+                
+                <div class="reassuringActionContainer">
+                    <button>Yes</button>
+                    <button>No</button>
+                </div>
+        </div>
+    </section>
+
+
     <!-- Main Section -->
     <section class="MainSection">
         <div class="inputs">
             <div class="title-cross">
-                <textarea id="title" placeholder="What Would be the Title ? 🤔" cols="30" rows="1"></textarea>
+                <textarea class="userInputs" id="title" placeholder="What Would be the Title ? 🤔" cols="30" rows="1"></textarea>
                 <span class="material-symbols-outlined" id="close-title" onclick="todohelper.hideTitle('title-cross', 'title-add')">
                     close
                     </span>
@@ -53,7 +66,7 @@
                     </span>
             </div>
 
-            <textarea id="task" placeholder="Learning a new Language maybe...🥳" cols="30" rows="10"></textarea>
+            <textarea class="userInputs" id="task" placeholder="Learning a new Language maybe...🥳" cols="30" rows="10"></textarea>
             <button id="AddTheTask" onclick="todohelper.addTheTask()">Add</button>
         </div>
 
