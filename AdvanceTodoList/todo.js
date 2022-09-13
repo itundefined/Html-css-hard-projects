@@ -37,109 +37,64 @@ class todo{
 
                 if(!this.alreadyPrinted.includes(index)) {
                     
-                // Create html now
-                const containerForSpans = document.createElement("div");
-                const containerForFunctionIcons = document.createElement("div")
-                const titleSpan = document.createElement("span");
-                const mainTaskSpan = document.createElement("span")
-                const deleteSpan = document.createElement("span");
-                const updateSpan = document.createElement("span");
+                    const title = element.title;
+                    const description = element.task;
+
+                    let hr = `<hr class="hrLine"/>`;
+                    
+                    if(!title) {hr = `<div></div>`}
+
+                    let container = document.querySelector(".showtasks");
     
-                // Adding eventListener to hover and toggle the class
-                containerForSpans.setAttribute("draggable", "true");
-                containerForSpans.setAttribute("ondragstart", "todohelper.drag(event)");
-                containerForSpans.setAttribute("ondragend", "todohelper.stopDragged(event)")
+                    const html = `<div draggable="true" ondragstart="todohelper.drag(event)" ondragend="todohelper.stopDragged(event)" class="spans-container ${index}"><span class="titleSpan">${title}</span>${hr}<span class="mainTaskSpan">${description}</span><div class="func-container"><span class="material-symbols-outlined deleteIcon">delete</span><span class="material-symbols-outlined updateIcon">update</span></div></div>`;
     
-                // Fetching the DropBox
-                const DropBox = document.getElementsByClassName("dropbox")[0];
-                DropBox.setAttribute("ondrop", "todohelper.drop(event)");
-                DropBox.setAttribute("ondragover", "todohelper.allowDrop(event)");
-    
-    
-                // create Text node for spans
-                const titleText = document.createTextNode(element["title"]);
-                const taskText = document.createTextNode(element["task"])
-                const deleteSpanText = document.createTextNode("delete");
-                const updateSpanText = document.createTextNode("update");
-    
-                // creating hr line
-                const hr = document.createElement("hr")
-                hr.classList.add("hrLine");
-    
-                // add text to the spans
-                titleSpan.appendChild(titleText);
-                mainTaskSpan.appendChild(taskText);
-                deleteSpan.appendChild(deleteSpanText);
-                updateSpan.appendChild(updateSpanText);
-    
-                // Assigning em class
-                containerForSpans.classList.add("spans-container");
-                containerForFunctionIcons.classList.add("func-container");
-                containerForSpans.classList.add(index);
-                titleSpan.classList.add("titleSpan");
-                mainTaskSpan.classList.add("mainTaskSpan");
-                deleteSpan.classList.add("material-symbols-outlined");
-                updateSpan.classList.add("material-symbols-outlined");
-                deleteSpan.classList.add("deleteIcon");
-                updateSpan.classList.add("updateIcon");
-                
-                
-    
-                // Binding them togather
-                containerForSpans.appendChild(titleSpan);
-                if(element['title'] !== "") {containerForSpans.appendChild(hr)}
-                containerForSpans.appendChild(mainTaskSpan);
-                
-                containerForFunctionIcons.appendChild(deleteSpan)
-                containerForFunctionIcons.appendChild(updateSpan)
-                
-                containerForSpans.appendChild(containerForFunctionIcons);
-    
-                // Fetching the node element 
-                const node = document.getElementsByClassName("showtasks")[0];
-    
-                // Now pushing into main Node
-                node.appendChild(containerForSpans);
-    
-    
-                // Adding eventListener for delete and update
-                const updateIcon = updateSpan;
-                const deleteIcon = deleteSpan;
-    
-                updateIcon.addEventListener('click', ()=>{
-                    // Calling update Function to update things
-                    const elementToUpdate = containerForSpans.className;
-                    this.updateButton(elementToUpdate);
-                })
-    
-                updateIcon.addEventListener("mouseover", ()=>{
-                    this.updationIndication(containerForSpans);
-                })
-    
-                updateIcon.addEventListener("mouseout", ()=>{
-                    this.updationIndication(containerForSpans);
-                })
-    
-                deleteIcon.addEventListener('click', ()=>{
-                    // calling delete function to delete things
-                    const elementToDel = containerForSpans.className;
-                    this.deleteButton(elementToDel);
-                })
-    
-                deleteIcon.addEventListener("mouseover", ()=>{
-                    this.deletionIndication(containerForSpans);
-                })
-    
-                deleteIcon.addEventListener("mouseout", ()=>{
-                    this.deletionIndication(containerForSpans);
-                })
+                    container.insertAdjacentHTML('afterbegin', html);
+
+                    
+                    // Adding the EventListener to deleteIcon and updateIcon
+
+                    container= [...document.querySelector(".showtasks").childNodes];
+                    container = container.slice(0, container.length - 1).reverse();
+
+                    const parentOfFuncs = container[index];
+                    const deleteIcon = parentOfFuncs.childNodes[3].childNodes[0];
+                    const updateIcon = parentOfFuncs.childNodes[3].childNodes[1];
+
+                    // For function
+
+                    deleteIcon.addEventListener('click', () => {this.deleteButton(parentOfFuncs)});
+                    updateIcon.addEventListener('click', () => {this.updateButton(parentOfFuncs)});
+
+                    // for styling
+
+                    updateIcon.addEventListener("mouseover", ()=>{
+                        this.updationIndication(parentOfFuncs);
+                    })
+                    
+                    updateIcon.addEventListener("mouseout", ()=>{
+                        this.updationIndication(parentOfFuncs);
+                    })                    
+
+
+                    deleteIcon.addEventListener("mouseover", ()=>{
+                        this.deletionIndication(parentOfFuncs);
+                    })
+
+                    deleteIcon.addEventListener("mouseout", ()=>{
+                        this.deletionIndication(parentOfFuncs);
+                    })                    
+
+
                 }
 
                 this.alreadyPrinted.push(index);
-    
             })
         }
     }
+
+
+
+
 
 
     addTheTask() {
@@ -197,6 +152,7 @@ class todo{
 
 
     deleteButton(element) {
+        element = element.className;
         let databaseName = this.databaseName;
         const storedInfo = localStorage.getItem(databaseName);
         // converting
@@ -260,6 +216,8 @@ class todo{
         let temp = this.temp;
         let databaseName = this.databaseName;
         const storedInfo = localStorage.getItem(databaseName);
+        const domElement = temp[2];
+
         // converting
         const parsedArr = JSON.parse(storedInfo);
         
@@ -273,7 +231,6 @@ class todo{
         parsedArr[elementToUpdate]['task'] = newText
         
         // Now to Store this modified array to localStorage
-    
         let jsonArr = JSON.stringify(parsedArr);
         localStorage.setItem(databaseName, jsonArr)
     
@@ -283,7 +240,7 @@ class todo{
     
         // Making the temp empty again to use and reload the page
         temp = [];
-        location.reload();
+        domElement.childNodes[2].innerText = newText;
     }
 
     allowDrop(ev) {
@@ -308,6 +265,8 @@ class todo{
     }
 
     updateButton(element) {
+        const domElement = element;
+        element = element.className;
         // Fetching the Editable window to make it block
         const editableWindowSection = document.getElementsByClassName("editable")[0];
         editableWindowSection.style.display = "flex";
@@ -329,10 +288,10 @@ class todo{
             // Now add that into editableWindow
             editableWindow.value = unUpdatedValue[2].innerText
         }
-    
-    
+        
         // Pushing to the temp array
-        this.temp.push(element, editableWindowSection)
+        this.temp = [];
+        this.temp.push(element, editableWindowSection, domElement);
     }
 
     hideTitle(hide, show) {
@@ -389,6 +348,3 @@ class todo{
 }
 
 const todohelper = new todo();
-
-
-
