@@ -517,3 +517,18 @@
 .spans-container{
     border: solid 0.25px rgba(255, 255, 255, 0.642);
 }
+
+
+
+
+/* For the mobile */
+
+@media only screen and (max-width: 768px) {
+    .multipleDeletion{
+        display: none;
+    }
+    
+    .dropbox{
+        display: none; 
+    }
+  }
