@@ -1,3 +1,6 @@
+"use strict";
+
+
 class todo{
     constructor() {
         const databaseName = "testing1" //localDatabse name connected to the localStorage
@@ -58,7 +61,7 @@ class todo{
                 if(!title) {hr = `<div></div>`}
 
 
-                const html = `<div draggable="true" ondragstart="todohelper.drag(event)" ondragend="todohelper.stopDragged(event)" class="spans-container ${index}"><span class="titleSpan">${title}</span>${hr}<span class="mainTaskSpan">${description}</span><div class="func-container"><span class="material-symbols-outlined deleteIcon">delete</span><span class="material-symbols-outlined updateIcon">update</span></div></div>`;
+                const html = `<div draggable="true"ondragstart="todohelper.drag(event)" ondragend="todohelper.stopDragged(event)" class="spans-container ${index}"><span class="titleSpan">${title}</span>${hr}<span class="mainTaskSpan">${description}</span><div class="func-container"><span class="material-symbols-outlined deleteIcon">delete</span><span class="material-symbols-outlined updateIcon">update</span></div></div>`;
 
                 container.insertAdjacentHTML('afterbegin', html);
 
@@ -218,6 +221,7 @@ class todo{
     
     }
 
+
     updateTheTask() {
         let temp = this.temp;
         let databaseName = this.databaseName;
@@ -247,7 +251,14 @@ class todo{
         // Making the temp empty again to use and reload the page
         temp = [];
         domElement.childNodes[2].innerText = newText;
-        this.refreshTheDom();
+        
+        // Now to wait and show the after heal treatment
+        domElement.classList.add("afterhealing");
+
+
+        setTimeout(() => {    
+            this.refreshTheDom();
+        }, 1300);
     }
 
     allowDrop(ev) {
@@ -299,6 +310,9 @@ class todo{
         // Pushing to the temp array
         this.temp = [];
         this.temp.push(element, editableWindowSection, domElement);
+
+        // Adding the class that element to  add break glass gif
+        domElement.classList.add("whilehealing");
     }
 
     hideTitle(hide, show) {
