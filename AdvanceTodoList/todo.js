@@ -7,14 +7,17 @@ class todo{
         let tempdrag;
         let temp = [];
 
-        let alreadyPrinted = [];
-        
-        this.alreadyPrinted = alreadyPrinted;
         this.temp = temp;
         this.tempdrag = tempdrag;
         this.databaseName = databaseName;
         this.themeHolder = themeHolder;
         this.localdatabase = localdatabase;
+
+
+        // Fetching the DropBox
+        const DropBox = document.getElementsByClassName("dropbox")[0];
+        DropBox.setAttribute("ondrop", "todohelper.drop(event)");
+        DropBox.setAttribute("ondragover", "todohelper.allowDrop(event)");
 
         this.toggleTheme();
 
@@ -27,73 +30,74 @@ class todo{
         }
     }
 
+
+    refreshTheDom() {
+        let container = document.querySelector(".showtasks");
+        container.innerHTML = "<div></div>";
+        this.renderAllThetasks(this.databaseName);
+    }
+
+    
     renderAllThetasks(databaseName) {
+        
         const str = localStorage.getItem(databaseName);
     
         // convert string to valid object
         const parsedArr = JSON.parse(str);
+
         if(parsedArr) {
             parsedArr.map((element, index) => {
 
-                if(!this.alreadyPrinted.includes(index)) {
-                    
-                    const title = element.title;
-                    const description = element.task;
 
-                    let hr = `<hr class="hrLine"/>`;
-                    
-                    if(!title) {hr = `<div></div>`}
+                const title = element.title;
+                const description = element.task;
+                let container = document.querySelector(".showtasks");
 
-                    let container = document.querySelector(".showtasks");
-    
-                    const html = `<div draggable="true" ondragstart="todohelper.drag(event)" ondragend="todohelper.stopDragged(event)" class="spans-container ${index}"><span class="titleSpan">${title}</span>${hr}<span class="mainTaskSpan">${description}</span><div class="func-container"><span class="material-symbols-outlined deleteIcon">delete</span><span class="material-symbols-outlined updateIcon">update</span></div></div>`;
-    
-                    container.insertAdjacentHTML('afterbegin', html);
-
-                    
-                    // Adding the EventListener to deleteIcon and updateIcon
-
-                    container= [...document.querySelector(".showtasks").childNodes];
-                    container = container.slice(0, container.length - 1).reverse();
-
-                    const parentOfFuncs = container[index];
-                    const deleteIcon = parentOfFuncs.childNodes[3].childNodes[0];
-                    const updateIcon = parentOfFuncs.childNodes[3].childNodes[1];
-
-                    // For function
-
-                    deleteIcon.addEventListener('click', () => {this.deleteButton(parentOfFuncs)});
-                    updateIcon.addEventListener('click', () => {this.updateButton(parentOfFuncs)});
-
-                    // for styling
-
-                    updateIcon.addEventListener("mouseover", ()=>{
-                        this.updationIndication(parentOfFuncs);
-                    })
-                    
-                    updateIcon.addEventListener("mouseout", ()=>{
-                        this.updationIndication(parentOfFuncs);
-                    })                    
+                let hr = `<hr class="hrLine"/>`;
+                
+                if(!title) {hr = `<div></div>`}
 
 
-                    deleteIcon.addEventListener("mouseover", ()=>{
-                        this.deletionIndication(parentOfFuncs);
-                    })
+                const html = `<div draggable="true" ondragstart="todohelper.drag(event)" ondragend="todohelper.stopDragged(event)" class="spans-container ${index}"><span class="titleSpan">${title}</span>${hr}<span class="mainTaskSpan">${description}</span><div class="func-container"><span class="material-symbols-outlined deleteIcon">delete</span><span class="material-symbols-outlined updateIcon">update</span></div></div>`;
 
-                    deleteIcon.addEventListener("mouseout", ()=>{
-                        this.deletionIndication(parentOfFuncs);
-                    })                    
+                container.insertAdjacentHTML('afterbegin', html);
+
+                
+                // Adding the EventListener to deleteIcon and updateIcon
+
+                container= [...document.querySelector(".showtasks").childNodes];
+                container = container.slice(0, container.length - 1).reverse();
+
+                const parentOfFuncs = container[index];
+                const deleteIcon = parentOfFuncs.childNodes[3].childNodes[0];
+                const updateIcon = parentOfFuncs.childNodes[3].childNodes[1];
+
+                // For function
+
+                deleteIcon.addEventListener('click', () => {this.deleteButton(parentOfFuncs)});
+                updateIcon.addEventListener('click', () => {this.updateButton(parentOfFuncs)});
+
+                // for styling
+
+                updateIcon.addEventListener("mouseover", ()=>{
+                    this.updationIndication(parentOfFuncs);
+                })
+                
+                updateIcon.addEventListener("mouseout", ()=>{
+                    this.updationIndication(parentOfFuncs);
+                })                    
 
 
-                }
+                deleteIcon.addEventListener("mouseover", ()=>{
+                    this.deletionIndication(parentOfFuncs);
+                })
 
-                this.alreadyPrinted.push(index);
+                deleteIcon.addEventListener("mouseout", ()=>{
+                    this.deletionIndication(parentOfFuncs);
+                })        
             })
         }
     }
-
-
-
 
 
 
@@ -138,7 +142,7 @@ class todo{
                 localStorage.setItem(databaseName, jsonArr)
             }
 
-            this.renderAllThetasks(this.databaseName);
+            this.refreshTheDom();
             title.value = "";
             task.value = "";
         }
@@ -168,7 +172,7 @@ class todo{
         let jsonArr = JSON.stringify(filteredArray);
         localStorage.setItem(databaseName, jsonArr)
         setTimeout(() => {
-            location.reload();
+            this.refreshTheDom();
         }, 500);
     }
 
@@ -206,6 +210,8 @@ class todo{
         // changing from here
         let jsonArr = JSON.stringify(filteredArray);
         localStorage.setItem(databaseName, jsonArr)
+
+
         setTimeout(() => {
             location.reload();
         }, 500);
@@ -241,6 +247,7 @@ class todo{
         // Making the temp empty again to use and reload the page
         temp = [];
         domElement.childNodes[2].innerText = newText;
+        this.refreshTheDom();
     }
 
     allowDrop(ev) {
