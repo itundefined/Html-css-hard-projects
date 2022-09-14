@@ -245,8 +245,23 @@
 .remove-item{
     transform: scale(1.10);
     opacity: 0;
+    background-color: rgba(255, 0, 0, 80%);
 }
 
+.whilehealing{
+    background-image: url("./assets/breakit.png");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+.afterhealing{
+    background-image: url(./assets/healing.gif);
+    background-position: center;
+    background-size: contain;
+    background-repeat: repeat-x;
+}
 
 /* Now make the editable workable--------------------------------------------------------------------------------------  */
 
