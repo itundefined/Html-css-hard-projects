@@ -214,6 +214,10 @@ class todo{
         let jsonArr = JSON.stringify(filteredArray);
         localStorage.setItem(databaseName, jsonArr)
 
+        // Fetching the Loading class
+
+        const LoadingClass = document.querySelector(".loading");
+        LoadingClass.style.display = "block";
 
         setTimeout(() => {
             location.reload();
@@ -258,7 +262,7 @@ class todo{
 
         setTimeout(() => {    
             this.refreshTheDom();
-        }, 1300);
+        }, 1500);
     }
 
     allowDrop(ev) {
@@ -369,3 +373,7 @@ class todo{
 }
 
 const todohelper = new todo();
+
+
+
+
