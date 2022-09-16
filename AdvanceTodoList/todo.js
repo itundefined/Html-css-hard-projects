@@ -9,6 +9,7 @@ class todo{
 
         let tempdrag;
         let temp = [];
+        let tempDel = [];
 
         this.temp = temp;
         this.tempdrag = tempdrag;
@@ -157,26 +158,54 @@ class todo{
         
     }
 
+    
+
+    reassuring(choice) {
+        // fetchint the reassuring html section 
+        const reassuringHtml = document.querySelector(".reassuring");
+        if(choice) {
+            if(choice === "yes") {
+                let element = this.tempDel[0];
+                element = element.className;
+                let databaseName = this.databaseName;
+                const storedInfo = localStorage.getItem(databaseName);      
+                
+                // converting
+                const parsedArr = JSON.parse(storedInfo);
+                const elementToDelete = parsedArr[parseInt(element.split(" ")[1])];
+                const elementFromDom = document.getElementsByClassName(element.split(" ")[1]);
+                elementFromDom[0].classList.add("remove-item")
+                // Filter the array now with filter method
+                const filteredArray = parsedArr.filter((x)=>{
+                    return x !== elementToDelete;
+                })
+            
+                let jsonArr = JSON.stringify(filteredArray);
+                localStorage.setItem(databaseName, jsonArr)
+                setTimeout(() => {
+                    this.refreshTheDom();
+                }, 500);                    
+            }
+            
+            else if(choice === "no") {
+                this.tempDel = [];
+            }
+            reassuringHtml.style.display = "none";
+        }
+
+        else{
+            reassuringHtml.style.display = "flex";
+        }
+    }
+
 
     deleteButton(element) {
-        element = element.className;
-        let databaseName = this.databaseName;
-        const storedInfo = localStorage.getItem(databaseName);
-        // converting
-        const parsedArr = JSON.parse(storedInfo);
-        const elementToDelete = parsedArr[parseInt(element.split(" ")[1])];
-        const elementFromDom = document.getElementsByClassName(element.split(" ")[1]);
-        elementFromDom[0].classList.add("remove-item")
-        // Filter the array now with filter method
-        const filteredArray = parsedArr.filter((x)=>{
-            return x !== elementToDelete;
-        })
-    
-        let jsonArr = JSON.stringify(filteredArray);
-        localStorage.setItem(databaseName, jsonArr)
-        setTimeout(() => {
-            this.refreshTheDom();
-        }, 500);
+        // Asking to proceed further
+        this.tempDel = [];
+        this.tempDel.push(element);
+        this.reassuring();    
+
+        // further is proceeding into the reassuring method
     }
 
 
