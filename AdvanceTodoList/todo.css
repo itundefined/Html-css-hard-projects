@@ -260,7 +260,24 @@
     background-image: url(./assets/healing.gif);
     background-position: center;
     background-size: contain;
-    background-repeat: repeat-x;
+    background-repeat: repeat;
+}
+
+
+.loading{
+    display: none;
+    z-index: 30;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 35%);
+    width: 100vw;
+    height: 100vh;
+    background-image: url(./assets/loading.gif);
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /* Now make the editable workable--------------------------------------------------------------------------------------  */
