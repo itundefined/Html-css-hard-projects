@@ -239,7 +239,8 @@
     width: 100%;
     display: flex;
     justify-content: flex-end;
-    gap: 10px;
+    gap: 13px;
+    padding: 10px;
 }
 
 .remove-item{
@@ -367,21 +368,25 @@
 .reassuring{
     position: fixed;
     display: none;
+    flex-wrap: wrap;
     top: 0;
     width: 100vw;
     height: 100vh;
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 55%);
-    z-index: 2;
+    z-index: 30;
 }
 
 
 .reassuringStyling{
     display: flex;
+    background-color: whitesmoke;
     gap: 20px;
     text-transform: uppercase;
-    color: white;
+    color: black;
+    padding: 45px;
+    border-radius: 20px;
     justify-content: center;
     align-items: center;
 }
@@ -410,7 +415,7 @@
 
 .dropbox{
     transition: 500ms;
-    transform: translateX(-100vw);
+    transform: translateX(-200vw);
     background-color: rgba(0, 0, 0, 33%);
     z-index: -10;
     color: white;
