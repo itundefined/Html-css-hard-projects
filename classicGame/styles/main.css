@@ -246,5 +246,6 @@
 @media only screen and (max-width: 600px) {
   .mainGame{
     flex-wrap: wrap;
+    height: 120vh;
   }
 }
