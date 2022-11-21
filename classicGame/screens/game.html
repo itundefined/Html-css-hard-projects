@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>gaming</title>
+    <meta name="description" content="digital gaming">
+    <meta name="author" content="codeoneb">
+    <meta name="copyright" content="codeoneb">
+    <meta name="robots" content="index, follow">
+
+    <link rel="stylesheet" href="../styles/common.css">
+    <link rel="stylesheet" href="../styles/main.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <script src="../scripts/index.js" defer></script>
+
+
+
+    <title>Classic</title>
+</head>
+<body>
+    
+
+    <div class="WelcomeMe">
+    </div>
+
+    <div class="navigation">
+        <div class="navItem1" onclick=location.reload();><span class="material-symbols-outlined">
+            refresh
+            </span><span>Refresh</span></div>
+        <div class="navItem2" onclick="location.href=`./menu.html`;"><span class="material-symbols-outlined">
+            house
+            </span><span>Home</span></div>
+    </div>
+
+    <section class="mainGame">
+
+        <div class="player">
+
+            <div class="generalScore loadMore"><p>Score:<span id="playerScore">0</span></p><span class="material-symbols-outlined">
+                engineering
+                </span></div>
+
+            <div class="currentMove loadMore cards extrablur">
+                <p>nothing</p>
+            </div>
+
+            <div class="listMoves">
+                <select id="classicGame">
+                    <option value="rock">Rock</option>
+                    <option value="paper">Paper</option>
+                    <option value="scissor">scissor</option>
+                    <option value="spock">Spock</option>                    
+                    <option value="lizard" selected>lizard</option>
+                  </select>
+                  <button class="moveButton">Hit It</button>
+            </div>
+
+        </div>
+
+
+        <div class="computer">
+
+            <div class="generalScore loadMore"><p>Score:<span id="computerScore">0</span></p><span class="material-symbols-outlined">
+                computer
+                </span></div>
+
+            <div class="currentMove loadMore cards extrablur">
+                <p>nothing</p>
+            </div>
+
+            <div class="listMoves"></div>
+
+        </div>
+
+    </section>
+
+</body>
+</html>
