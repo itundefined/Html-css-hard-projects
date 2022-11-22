@@ -90,63 +90,12 @@ body{
     background-repeat: no-repeat;
     background-size: 200vh;
     background-position: center;
-    animation: scaler 10s ease-in-out, imageChanger 10s ease-in-out infinite;
+    animation: scaler 10s ease-in-out;
     font-family: var(--fontName);
 }
 
 
-@keyframes imageChanger {
-  0%{
-    filter: brightness(1);
-    background-image: linear-gradient(
-      rgba(0,0,0,0.7),
-      rgba(0,0,0,0.7)
-      ),url("./assets/codeonebpic/thomas.jpg");
-  }
 
-  19%{
-    filter: brightness(0);
-  }
-
-  35%{
-    background-image: linear-gradient(
-      rgba(0,0,0,0.7),
-      rgba(0,0,0,0.7)
-      ),url("./assets/codeonebpic/cod.jpg");
-  }
-
-  40%{
-    filter: brightness(1);
-  }
-
-  50%{
-    filter: brightness(0);
-  }
-
-  65%{
-    background-image: linear-gradient(
-      rgba(0,0,0,0.7),
-      rgba(0,0,0,0.7)
-      ),url("./assets/codeonebpic/ragnar.jpg");
-  }
-  
-
-  70%{
-    filter: brightness(1);
-  }
-
-  80%{
-    filter: brightness(0);
-  }
-
-  100%{
-    background-image: linear-gradient(
-      rgba(0,0,0,0.7),
-      rgba(0,0,0,0.7)
-      ),url("./assets/codeonebpic/thomas.jpg");
-  }
-
-}
 
 
 @keyframes scaler {
