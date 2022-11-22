@@ -1,0 +1,482 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas&display=swap');
+
+/* nutral css */
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+}
+
+
+:root{
+    --fontName: 'Roboto';
+    --fontSec: 'Mountains of Christmas';
+    --fontSm: 12px;
+    --fontM: 14px; 
+    --fontLg: 16px;
+    --fontXl: 20px;
+    --fontXxl: 24px;
+}
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #121212 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #000000;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #FFFFFF;
+    border-radius: 0px;
+    border: 0px solid #FFFFFF;
+  }
+
+  
+body{
+    background: black;
+}
+
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background: -webkit-linear-gradient(rgb(32, 201, 74), rgb(32, 109, 209));
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 4px;
+  }
+
+
+.welcomeLine{
+    filter: drop-shadow(2px 4px 5px rgb(230, 230, 230));
+    text-align: center;
+    font-size: var(--fontXxl);
+    text-transform: uppercase;
+}
+
+
+.mainSlider{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    min-height: 100vh;
+    max-height: 100vh;
+    background-image: linear-gradient(
+        rgba(0,0,0,0.7),
+        rgba(0,0,0,0.7)
+        ),url("./assets/codeonebpic/thomas.jpg");
+    background-repeat: no-repeat;
+    background-size: 200vh;
+    background-position: center;
+    animation: scaler 10s ease-in-out, imageChanger 10s ease-in-out infinite;
+    font-family: var(--fontName);
+}
+
+
+@keyframes imageChanger {
+  0%{
+    filter: brightness(1);
+    background-image: linear-gradient(
+      rgba(0,0,0,0.7),
+      rgba(0,0,0,0.7)
+      ),url("./assets/codeonebpic/thomas.jpg");
+  }
+
+  19%{
+    filter: brightness(0);
+  }
+
+  35%{
+    background-image: linear-gradient(
+      rgba(0,0,0,0.7),
+      rgba(0,0,0,0.7)
+      ),url("./assets/codeonebpic/cod.jpg");
+  }
+
+  40%{
+    filter: brightness(1);
+  }
+
+  50%{
+    filter: brightness(0);
+  }
+
+  65%{
+    background-image: linear-gradient(
+      rgba(0,0,0,0.7),
+      rgba(0,0,0,0.7)
+      ),url("./assets/codeonebpic/ragnar.jpg");
+  }
+  
+
+  70%{
+    filter: brightness(1);
+  }
+
+  80%{
+    filter: brightness(0);
+  }
+
+  100%{
+    background-image: linear-gradient(
+      rgba(0,0,0,0.7),
+      rgba(0,0,0,0.7)
+      ),url("./assets/codeonebpic/thomas.jpg");
+  }
+
+}
+
+
+@keyframes scaler {
+    0%{
+        background-size: 300vh;
+    }
+
+    70%{
+        background-size: 250vh;
+    }
+
+    100%{
+        background-size: 200vh;
+    }
+}
+
+
+/* Arrow animation----------------------- */
+.arrows {
+    width: 60px;
+    height: 72px;
+    position: absolute;
+    left: 50%;
+    margin-left: -30px;
+    bottom: 20px;
+    cursor: pointer;
+  }
+  
+  .arrows path {
+    stroke: teal;
+    fill: transparent;
+    stroke-width: 3px;  
+    animation: arrow 2s infinite;
+    -webkit-animation: arrow 2s infinite; 
+  }
+  
+  @keyframes arrow
+  {
+  0% {opacity:0}
+  40% {opacity:1}
+  80% {opacity:0}
+  100% {opacity:0}
+  }
+  
+  @-webkit-keyframes arrow /*Safari and Chrome*/
+  {
+  0% {opacity:0}
+  40% {opacity:1}
+  80% {opacity:0}
+  100% {opacity:0}
+  }
+  
+  .arrows path.a1 {
+    animation-delay:-1s;
+    -webkit-animation-delay:-1s; /* Safari 和 Chrome */
+  }
+  
+  .arrows path.a2 {
+    animation-delay:-0.5s;
+    -webkit-animation-delay:-0.5s; /* Safari 和 Chrome */
+  }
+  
+  .arrows path.a3 { 
+    animation-delay:0s;
+    -webkit-animation-delay:0s; /* Safari 和 Chrome */
+  }
+
+
+  /* navigation */
+
+.navigation{
+    position: fixed;
+    width: 20vw;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 200px 30px;
+    background-color: whitesmoke;
+    font-family: var(--fontName);
+    text-transform: uppercase;
+    transition: all 500ms ease-in-out;
+    clip-path: circle(0% at 100% 0);
+    z-index: 2;
+}
+
+
+
+
+.hideMenuAndhide{
+    clip-path: circle(150% at 100% 0);
+}
+
+
+.navigation > div{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-style: italic;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    transition: transform 500ms ease-in-out;
+    transition-delay: calc(0.055s * var(--i));
+    cursor: pointer;
+}
+
+
+.closeMenuOpen{
+    position: fixed;
+    right: 0;
+    z-index: 3;
+    padding: 20px 30px;
+    font-size: 14px !important;
+    transform: scale(0.7);
+}
+
+
+
+.navigation > div > span{
+    padding: 5px;
+}
+
+.navigation > div:hover{
+    transform: scale(1.5);    
+}
+
+
+.navigation >div:hover{
+    transform: translateX(5%);
+}
+
+
+.visuallyHidden {
+    position: absolute; 
+    overflow: hidden; 
+    clip: rect(0 0 0 0); 
+    height: 1px; width: 1px; 
+    margin: -1px; padding: 0; border: 0; 
+}
+
+.hamburger {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    cursor: pointer;
+}
+
+
+.hamburger .bar {
+    padding: 0;
+    width: 30px;
+    height: 3px;
+    background-color: teal;
+    display: block;
+    border-radius: 4px;
+    transition: all 0.4s ease-in-out;
+    position: absolute; 
+}
+
+.bar1 {
+    top: 0;
+}
+
+.bar2,
+.bar3 {
+    top: 13.5px;
+}
+
+.bar3 {
+    right: 0;
+}
+
+.bar4 {
+    bottom: 0;
+}
+
+/* HAMBURGER 1 */
+.checkbox1:checked + label > .hamburger1 > .bar1{
+    transform: rotate(45deg);
+    transform-origin: 5%;
+    width: 41px
+}
+
+.checkbox1:checked + label > .hamburger1 > .bar2 {
+    transform: translateX(-40px);
+    background-color: transparent;
+}
+
+.checkbox1:checked + label > .hamburger1 > .bar3 {
+    transform: translateX(40px);
+    background-color: transparent;
+}
+
+.checkbox1:checked + label > .hamburger1 > .bar4 {
+    transform-origin: 5%;
+    transform: rotate(-45deg);
+    width: 41px;
+}
+
+
+
+
+.AboutMe, .contactMe{
+    padding: 50px 30px;
+    height: 100vh;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    color: whitesmoke;
+    font-family: var(--fontName);
+    font-size: var(--fontl);
+    align-items: center;
+    text-align: center;
+}
+
+.AboutMe > h3, .contactMe > h3{
+    font-family: var(--fontSec);
+    font-size: calc(var(--fontXxl) + 10px);
+    text-decoration: underline;
+}
+
+.Wave{
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+}
+
+.AboutMe{
+    position: relative;
+    background-image: linear-gradient(45deg, #5f3474, #0fffff40);
+}
+
+
+.contactMe{
+    background-color: rgb(39, 48, 54);   
+}
+
+.AllContainer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+}
+
+.AllContainer > div{
+    width: 50%;
+    height: 100%;
+}
+
+.infoBeforeAccordion{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--fontSec);
+    font-size: calc(var(--fontXxl) + 10px);
+}
+
+.accordion {
+    display: flex;
+    height: 80vh;
+  }
+  
+  .accordion .item {
+    background-size: cover;
+    background-position: left top;
+    background-repeat: no-repeat;
+    flex: 1;
+    transition: flex 400ms;
+    cursor: pointer;
+  }
+  
+  .accordion .item:hover {
+    flex: 3;
+    filter: brightness(1);
+  }
+
+
+  .accordion .item{
+    background-position: center;
+    background-size: cover;
+    filter: brightness(.5);
+  }
+  
+  .linkdin {
+    background-position: unset !important;
+    background-image: url(https://akm-img-a-in.tosshub.com/indiatoday/images/story/202001/linked-in-2668692_1280__1_.png?size=690:388);
+  }
+  
+  .twitter {
+    background-image:url(https://media.wired.com/photos/5a55b72db1cfb87f3206aa5b/191:100/w_1910,h_1000,c_limit/Twitter-Hole-featured.jpg);
+  }
+  
+  .gmail {
+    background-image: url(https://play-lh.googleusercontent.com/KSuaRLiI_FlDP8cM4MzJ23ml3og5Hxb9AapaGTMZ2GgR103mvJ3AAnoOFz1yheeQBBI);
+  }
+
+  .codeonebWebsite {
+    background-image: url(https://www.telegraph.co.uk/content/dam/technology/2017/08/03/Internet2_trans_NvBQzQNjv4BqJRZdqtQCcB0-hjTaQxsqmtMZZIw9jvU_z2DJKltQ1FE.jpg);
+  }
+
+  .CV {
+    filter: brightness(.5) blur(2px) !important;
+    background-image: url("./assets/codeonebpic/resumeDemo.jpg");
+  }
+  
+  
+  @media only screen and (max-width: 700px) {
+    .navigation{
+        width: 60vw;
+    }
+
+    .AllContainer > div{
+        width: 100%;
+        height: fit-content;
+    }
+
+    .AllContainer{
+        flex-wrap: wrap;
+    }
+
+    .accordion {
+        display: flex;
+        height: 50vh;
+      }
+
+}
+
