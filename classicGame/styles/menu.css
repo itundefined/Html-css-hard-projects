@@ -16,6 +16,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     font-family: var(--fontName);
+    animation: scaler 10s ease-in-out;
 }
 
 .welcomeLine{
@@ -29,6 +30,19 @@
     color: white;
 }
 
+@keyframes scaler {
+  0%{
+      background-size: 300vh;
+  }
+
+  70%{
+      background-size: 250vh;
+  }
+
+  100%{
+      background-size: 200vh;
+  }
+}
 
 
 /* play button */
