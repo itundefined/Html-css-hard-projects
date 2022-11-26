@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Helper</title>
+
+    <link rel="stylesheet" href="./style.css">
+
+    <script src="./index.js" defer></script>
+
+    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+
+
+</head>
+<body>
+
+
+    <div class="createUpdate">
+        <div>
+            <span class="material-symbols-outlined">
+                title
+                </span><input type="text" class="keyNote inputs" placeholder="Key Note, Title etc...">
+        </div>
+        
+        <div>
+            <span class="material-symbols-outlined">
+                description
+                </span><textarea  name="description" cols="30" rows="10" class="descriptionData inputs" placeholder="Description"></textarea>
+        </div>
+
+        <button class="updateOrDelete"></button>
+    </div>
+
+
+    <div class="container">
+        <div class="LeftBar">
+
+            <div class="topLevel">
+                <div class="profile">
+                    <img id="profilePic" src="http://unsplash.it/40/40" alt="profile-image">
+                    <label for="profileName" class="profileName">This will come from the storage</label>
+                </div>
+            </div>
+
+
+            
+            <div class="menuList mainBars">
+                <label for="menu" class="menu">Menu</label>
+                <ul>
+                    <li>
+                        <span class="material-symbols-outlined">
+                            grid_view
+                            </span><span>Today</span>
+                    </li>
+
+                    <li>
+                        <span class="material-symbols-outlined">
+                            history
+                            </span><span>All Other Day</span>
+                    </li>
+
+                    <li>
+                        <span class="material-symbols-outlined">
+                            add
+                            </span><span>Create</span>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+
+
+        <div class="MainBar">
+            
+            <div class="topLevel">
+                <div class="searchWrapper">
+                    <span class="material-symbols-outlined">
+                        search
+                        </span><input type="search" placeholder="Find Your Task">
+                </div>
+            </div>
+
+            <div class="TasksList mainBars">
+
+                <!-- This will come from the js as Tasks -->
+
+
+                <!-- <div class="card">
+                    <div class="cardWrapper">
+                        <p class="title">This is the main title</p>
+                        <span class="material-symbols-outlined">more_horiz</span>
+                    </div>
+                    <p>Read More.</p>
+                </div> -->
+
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+</html>

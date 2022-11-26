@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+*, *::after, *::before{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+:root{
+    --fontName: "";
+    --fontM: 400;
+    --fontL: 700;
+}
+
+
+
+
+/* layout */
+
+.container {
+    width: 100;
+    height: 100vh;
+    display: flex;
+}
+
+.LeftBar{
+    flex-basis: 20%;
+    min-width: 20%;
+    border-right: solid 1px rgba(0, 0, 0, 0.1);
+}
+
+.MainBar{
+    flex-basis: 80%;
+}
+
+.mainBars{
+    padding: 5vh 20px;
+}
+
+.TasksList{
+  display: flex;
+  gap: 50px;
+  height: 80%;
+  background-color: whitesmoke;
+  max-width: 80vw;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+
+.topLevel{
+    display: flex;
+    width: 100%;
+    height: 20vh;
+    border-bottom: solid 1px rgba(0, 0, 0, 0.1);
+    align-items: center;
+    padding: 0 20px;
+}
+
+.topLevel input{
+    outline: none;
+    border: none;
+    width: 100%;
+}
+
+.MainBar div.searchWrapper{
+    border: solid 1px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    border-radius: 190px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.menuList label{
+    text-transform: uppercase;
+}
+
+
+.menu{
+    padding-left: 5px;
+}
+
+.menuList li{
+    text-transform: capitalize;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 10px 5px;
+}
+
+.menuList li:hover{
+  background: rgb(18,184,210);
+  background: linear-gradient(122deg, rgba(18,184,210,1) 0%, rgba(58,117,200,1) 100%);
+}
+
+.menuList ul{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.profile{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#profilePic{
+    border-radius: 190px;
+    background-color: gray;
+    width: 40px;
+    height: 40px;
+}
+
+
+.card{
+  position: relative;
+  min-width: 300px;
+  max-width: 300px;
+  min-height: 350px;
+  max-height: 350px;
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: end;
+  transition: transform 500ms ease-in-out;
+}
+
+.card:hover{
+  transform: scale(1.1);
+}
+
+.card .cardWrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center
+}
+
+.createUpdate{
+  position: absolute;
+  display: none;
+  padding: 10vh;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+  top:0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: whitesmoke;
+  z-index:2;
+}
+
+.createUpdate input, textarea{
+  outline: none;
+  border: none;
+  width: 100%;
+  padding: 5px; 
+  background-color : transparent;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  resize: none;
+}
+
+.createUpdate > div{
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  gap: 5px;
+  width: 100%;
+  padding: 10px 10px;
+}
+
+.updateOrDelete{
+  margin-left: 40px;
+}
+
+
+/* CSS */
+.updateOrDelete {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, .4) 0 2px 4px,rgba(45, 35, 66, .3) 0 7px 13px -3px,rgba(58, 65, 111, .5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.updateOrDelete:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, .4) 0 2px 4px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.updateOrDelete:hover {
+  box-shadow: rgba(45, 35, 66, .4) 0 4px 8px, rgba(45, 35, 66, .3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.updateOrDelete:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.stepPage{
+
+}
+
+
+
