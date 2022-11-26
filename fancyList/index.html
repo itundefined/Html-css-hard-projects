@@ -17,11 +17,31 @@
   </head>
   <body>
 
-    <div class="pageChanger stepPageAdder">
+    <div class="pageChanger ">
+    
 
     </div>
 
+
+    <div class="pageChanger2 ">
+
+        <!-- coming from js -->
+
+        <!-- <h3>Main title</h3>
+
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Veritatis facilis itaque omnis laudantium distinctio nam magnam iusto dolores ab. Odio doloribus nesciunt quod non, voluptate nostrum deserunt ut excepturi quam.
+        Dicta tenetur atque distinctio nisi quam iusto alias laborum impedit, culpa rem modi voluptates sed consectetur vel libero harum veritatis. Libero mollitia provident sit dolor quas cum voluptate exercitationem architecto?
+        Repudiandae totam tempore porro ex. Placeat provident sapiente, corporis est atque deleniti expedita cum ipsam! Ipsum, itaque quos! Eius possimus veritatis laboriosam deleniti sapiente unde excepturi sunt aperiam praesentium quis.
+        Tenetur a nostrum reprehenderit harum perferendis, magnam eveniet iusto dolorum. Laborum molestias, natus id, officiis quo qui, voluptatibus nemo fuga amet maiores exercitationem dolor voluptas consequuntur consequatur similique unde beatae.
+        Veritatis eveniet iure tempora deserunt iusto, sequi iste cupiditate id nihil commodi alias nam, consectetur saepe sunt consequatur. Molestias omnis, accusamus sed dolor nisi iure similique natus minima quidem et.</p> -->
+
+    </div>
+
+
+
+
     <div class="createUpdate">
+        <div class="closeSection" onclick="helper()"><span class="material-symbols-outlined">close</span></div>
       <div>
         <span class="material-symbols-outlined"> title </span
         ><input
@@ -103,4 +123,17 @@
       </div>
     </div>
   </body>
+
+  <script>
+    function helper() {
+        const pageChanger = document.querySelector(".pageChanger");
+        const createUpdateWindow = document.querySelector(".createUpdate");
+        createUpdateWindow.style.display = "none";
+        const pageChanger2 = document.querySelector(".pageChanger2");
+        pageChanger.classList.remove("stepPage");
+        pageChanger2.classList.remove("stepPage2");   
+        console.log("workin");     
+    }
+  </script>
+
 </html>

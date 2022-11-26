@@ -72,6 +72,13 @@
         pageChanger.classList.toggle("stepPage");
     }
 
+    pageTransition2() {
+        const pageChanger = document.querySelector(".pageChanger2");
+        pageChanger.classList.toggle("stepPage2");
+    }
+
+    
+
     AllEventListeners() {
       const that = this;
       const [today, allOtherDay, createNew] =
@@ -84,6 +91,7 @@
 
 
         MainCards.addEventListener("click", function(e){
+
             if(e.target.classList.contains("updateButton")) {
                 that.updateTask(e.target.classList);
                 buttonToCreate.innerText = "update";
@@ -96,6 +104,19 @@
 
             else if(e.target.classList.contains("deleteButton")) {
                 that.removeTask(e.target.classList);
+            }
+
+            else if(e.target.classList.contains("card")) {
+                const UniqueId = parseInt(e.target.classList[1]);
+                const allTasks = that.databaseRead();
+                const windowToChange = document.querySelector(".pageChanger2");
+                const elementToUpdate = allTasks.filter((item)=>{return item.id === UniqueId});
+                windowToChange.innerHTML = "";
+                const html = `
+                <div class="closeSection" onclick="helper()"><span class="material-symbols-outlined">close</span></div>
+                <h3>${elementToUpdate[0].title}</h3> <p>${elementToUpdate[0].task}</p>`
+                windowToChange.insertAdjacentHTML("afterbegin", html);
+                that.pageTransition2(); 
             }
         })
 
@@ -135,7 +156,7 @@
         }
         const colorToChoose = niceBackground[wheel];
 
-        const html = `   <div class="card ${item.id}" style="${colorToChoose}">
+        const html = `<div class="card ${item.id}" style="${colorToChoose}">
                                     <div class="cardWrapper">
                                         <p class="title">${item.title}</p>
                                     </div>
@@ -184,7 +205,7 @@
         descriptionText.value = "";
 
         createUpdateWindow.style.display = "none";
-        
+
         setTimeout(() => {
             this.pageTransition();
         }, 100);
