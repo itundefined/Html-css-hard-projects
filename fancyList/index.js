@@ -29,6 +29,8 @@
       
       this.AllEventListeners();
 
+      this.SearchedData;
+
     }
 
     databaseRead() {
@@ -107,6 +109,20 @@
       const buttonToCreate = document.querySelector(".updateOrDelete");
       const MainCards = document.querySelector(".TasksList");
       const trigger = document.querySelector("input[type='checkbox']");
+      const Searchbar = document.querySelector(".searchBar");
+
+      Searchbar.oninput = function(inputValue){
+        that.SearchedData = this.value;
+        if(this.value.trim() === ""){
+          that.renderAllTasks();
+        }
+      };
+
+      Searchbar.onkeydown = function(event){
+        if(event.key === "Enter") {that.sortTask("search")}
+      }
+
+
       trigger.onclick = function(){that.themeChanger(trigger)};
 
 
@@ -183,8 +199,7 @@
       const niceBackground = [
         "background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);",
         "background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);",
-        "background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);",
-        "background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);",
+        "background-image: linear-gradient(to right, #4facfe 0%, #00f2fe 100%);"
       ];
       let wheel = -1;
 
@@ -196,11 +211,14 @@
         }
         const colorToChoose = niceBackground[wheel];
 
+        const time = Math.floor(Date.now()/1000/60/60 - item.id/1000/60/60);
+
         const html = `<div class="card ${item.id}" style="${colorToChoose}">
                                     <div class="cardWrapper">
                                         <p class="title">${item.title}</p>
                                     </div>
-                                    <p>Read More.</p>
+                                    
+                                    <div class="cardInfo">${time} HOURS AGO <p>Read More.</p></div>
 
                                     <div class="moreOptions"><button class="updateButton ${item.id}">update</button> <button class="deleteButton ${item.id}">delete</button></div>
                                 </div>
@@ -319,6 +337,22 @@
               return CreatedAt > 24;
           })
       }
+
+      else if(SortWhat === "search") {
+        let findThis = this.SearchedData;
+        findThis = findThis.trim();
+        if (findThis === "") {
+
+        }
+
+        else{
+          ModifiedData = CurrentData.filter((item)=>{
+            if(item.title.toLowerCase().includes(this.SearchedData.toLowerCase()) || item.task.toLowerCase().includes(this.SearchedData.toLowerCase())){
+              return item;
+            }
+          })
+        }
+      }
       
       this.renderAllTasks(ModifiedData);
 
@@ -335,4 +369,65 @@
   }
 
   const trigger = new TodoListHelper();
+})();
+
+// For The automate welcome line
+
+(function (){
+  var TxtRotate = function(el, toRotate, period) {
+      this.toRotate = toRotate;
+      this.el = el;
+      this.loopNum = 0;
+      this.period = parseInt(period, 10) || 2000;
+      this.txt = '';
+      this.tick();
+      this.isDeleting = false;
+    };
+    
+    TxtRotate.prototype.tick = function() {
+      var i = this.loopNum % this.toRotate.length;
+      var fullTxt = this.toRotate[i];
+    
+      if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+      } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+      }
+    
+      this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+    
+      var that = this;
+      var delta = 200 - Math.random() * 100;
+    
+      if (this.isDeleting) { delta /= 2; }
+    
+      if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+      } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+      }
+    
+      setTimeout(function() {
+        that.tick();
+      }, delta);
+    };
+    
+    window.onload = function() {
+      var elements = document.getElementsByClassName('txt-rotate');
+      for (var i=0; i<elements.length; i++) {
+        var toRotate = elements[i].getAttribute('data-rotate');
+        var period = elements[i].getAttribute('data-period');
+        if (toRotate) {
+          new TxtRotate(elements[i], JSON.parse(toRotate), period);
+        }
+      }
+      // INJECT CSS
+      var css = document.createElement("style");
+      css.type = "text/css";
+      css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+      document.body.appendChild(css);
+    };
 })();
