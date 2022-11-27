@@ -103,15 +103,13 @@
   
     AllEventListeners() {
       const that = this;
-      const [today, allOtherDay, createNew] =
-        document.querySelectorAll(".menuList li");
+      const [today, allOtherDay, createNew] = document.querySelectorAll(".menuList li");
+      const createUpdateWindow = document.querySelector(".createUpdate");
+      const buttonToCreate = document.querySelector(".updateOrDelete");
+      const MainCards = document.querySelector(".TasksList");
+      const trigger = document.querySelector("input[type='checkbox']");
+      trigger.onclick = function(){that.themeChanger(trigger)};
 
-
-
-        const createUpdateWindow = document.querySelector(".createUpdate");
-        const buttonToCreate = document.querySelector(".updateOrDelete");
-
-        const MainCards = document.querySelector(".TasksList");
 
 
         MainCards.addEventListener("click", function(e){
@@ -326,6 +324,15 @@
       this.renderAllTasks(ModifiedData);
 
     }
+
+    themeChanger(){
+      const TheWholeContainer = document.querySelector(".container");
+      const SearchBar = document.querySelector(".searchWrapper");
+    
+      SearchBar.classList.toggle('borderHelper');
+      TheWholeContainer.classList.toggle("WholeContainer");
+    }
+
   }
 
   const trigger = new TodoListHelper();
