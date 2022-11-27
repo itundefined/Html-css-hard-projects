@@ -1,9 +1,8 @@
 (function () {
   class TodoListHelper {
     constructor() {
-      const databaseName = "testing1"; //localDatabse name connected to the localStorage
-      const databaseNameUserSettings = "userSettings";
-      const SafeLocker = "SafeLocker"; //For Sorting Purposes
+      const databaseName = "CodeonebFancyList"; //localDatabse name connected to the localStorage
+      const databaseNameUserSettings = "CodeonebFancyListuserSettings";
       
 
       const localdatabase = JSON.parse(localStorage.getItem(databaseName));
