@@ -2,19 +2,34 @@
   class TodoListHelper {
     constructor() {
       const databaseName = "testing1"; //localDatabse name connected to the localStorage
+      const databaseNameUserSettings = "userSettings";
+      const SafeLocker = "SafeLocker"; //For Sorting Purposes
+      
+
       const localdatabase = JSON.parse(localStorage.getItem(databaseName));
+      const localUserSettings = localStorage.getItem(databaseNameUserSettings);
+      this.userSettingsDataBase = databaseNameUserSettings;
+
+      this.UserSettings = localUserSettings;
 
       this.databasename = databaseName;
 
       this.localdatabase = localdatabase;
+    
 
       if (localdatabase) {
-        this.renderAllTasks(databaseName);
+        this.renderAllTasks();
       } else {
         localStorage.setItem(databaseName, JSON.stringify([]));
+        this.renderAllTasks();
       }
 
+      if (!localUserSettings) {
+        localStorage.setItem(databaseNameUserSettings, "today");
+      } 
+      
       this.AllEventListeners();
+
     }
 
     databaseRead() {
@@ -63,6 +78,14 @@
         localStorage.setItem(this.databasename, jsonArr);
     }
 
+    defaultSelector() {
+      const [today, allOtherDay, createNew] =
+        document.querySelectorAll(".menuList li");
+
+        today.classList.add("selected")
+        allOtherDay.classList.remove("selected")
+    }
+
     createUniqueId() {
       return Date.now();
     }
@@ -77,12 +100,13 @@
         pageChanger.classList.toggle("stepPage2");
     }
 
-    
-
+  
     AllEventListeners() {
       const that = this;
       const [today, allOtherDay, createNew] =
         document.querySelectorAll(".menuList li");
+
+
 
         const createUpdateWindow = document.querySelector(".createUpdate");
         const buttonToCreate = document.querySelector(".updateOrDelete");
@@ -121,6 +145,9 @@
         })
 
       createNew.onclick = function () {
+        const [keyNote, descriptionText] = document.querySelectorAll(".inputs");
+        keyNote.value = "";
+        descriptionText.value = "";
         that.pageTransition();
         buttonToCreate.innerText = "Create";
         buttonToCreate.onclick = function () {
@@ -132,13 +159,29 @@
         }, 800);
 
       };
+
+
+      today.onclick = function () {
+        today.classList.add("selected")
+        allOtherDay.classList.remove("selected")
+        that.sortTask("recent");
+      };
+
+      allOtherDay.onclick = function () {
+        today.classList.remove("selected");
+        allOtherDay.classList.add("selected");
+        that.sortTask("allOtherTasks");
+      };
+
     }
+    
 
-    renderAllTasks() {
+    renderAllTasks(ListOfTaskss=this.databaseRead()) {
       const taskContainer = document.querySelector(".TasksList");
-      taskContainer.innerHTML = "";
 
-      const allTasks = this.databaseRead();
+      taskContainer.innerHTML = "";
+      
+      const allTasks = ListOfTaskss; 
 
       const niceBackground = [
         "background-image: linear-gradient(120deg, #a6c0fe 0%, #f68084 100%);",
@@ -170,6 +213,7 @@
     }
 
     addTask() {
+      this.defaultSelector();
       const createUpdateWindow = document.querySelector(".createUpdate");
       const [keyNote, descriptionText] = document.querySelectorAll(".inputs");
 
@@ -259,7 +303,29 @@
 
     }
 
-    sortTask() {}
+    sortTask(SortWhat) {
+      const CurrentData = this.databaseRead();
+      let ModifiedData;
+
+      if(SortWhat === "recent") {  
+
+            ModifiedData = CurrentData.filter((item)=>{
+              const CreatedAt = Math.floor(Date.now()/1000/60/60 - item.id/1000/60/60);
+              return CreatedAt <= 24;
+          })
+          
+      }
+
+      else if(SortWhat === "allOtherTasks") {
+            ModifiedData = CurrentData.filter((item)=>{
+              const CreatedAt = Math.floor(Date.now()/1000/60/60 - item.id/1000/60/60);
+              return CreatedAt > 24;
+          })
+      }
+      
+      this.renderAllTasks(ModifiedData);
+
+    }
   }
 
   const trigger = new TodoListHelper();

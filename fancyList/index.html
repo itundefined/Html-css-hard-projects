@@ -75,7 +75,7 @@
               alt="profile-image"
             />
             <label for="profileName" class="profileName"
-              >This will come from the storage</label
+              >Welcome</label
             >
           </div>
         </div>
@@ -83,12 +83,12 @@
         <div class="menuList mainBars">
           <label for="menu" class="menu">Menu</label>
           <ul>
-            <li>
+            <li class="today tabs selected">
               <span class="material-symbols-outlined"> grid_view </span
               ><span>Today</span>
             </li>
 
-            <li>
+            <li class="allDays tabs">
               <span class="material-symbols-outlined"> history </span
               ><span>All Other Day</span>
             </li>
@@ -132,7 +132,6 @@
         const pageChanger2 = document.querySelector(".pageChanger2");
         pageChanger.classList.remove("stepPage");
         pageChanger2.classList.remove("stepPage2");   
-        console.log("workin");     
     }
   </script>
 
