@@ -579,7 +579,7 @@ textarea {
   }
 
   .pageChanger, .pageChanger2{
-    min-height: 145vh !important;
+    min-height: 110vh;
   }
   
   .pageChanger2{
