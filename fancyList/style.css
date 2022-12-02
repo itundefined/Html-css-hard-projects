@@ -538,6 +538,12 @@ textarea {
     padding-top: 30px;
   }
 
+  
+  .TasksList.mainBars {
+    max-width: 100%;
+    min-height: 80vh;
+}
+  
   .card:hover{
     transform: scale(1);      
   }
