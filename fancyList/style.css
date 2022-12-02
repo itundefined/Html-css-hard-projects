@@ -111,7 +111,7 @@ input:checked + .slider:before {
 
 .WholeContainer::after{
   content: "";
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
@@ -378,7 +378,7 @@ input:checked + .slider:before {
 }
 
 .createUpdate {
-  position: absolute;
+  position: fixed;
   display: none;
   padding: 10vh;
   align-items: flex-start;
@@ -474,7 +474,7 @@ textarea {
 
 
 .pageChanger {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
@@ -491,7 +491,7 @@ textarea {
 
 
 .pageChanger2{
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   right: 0;
@@ -578,9 +578,6 @@ textarea {
     padding: 0;
   }
 
-  .pageChanger, .pageChanger2{
-    min-height: 111vh;
-  }
   
   .pageChanger2{
     padding: 10px;
