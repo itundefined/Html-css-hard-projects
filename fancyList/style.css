@@ -541,7 +541,7 @@ textarea {
   
   .TasksList.mainBars {
     max-width: 100%;
-    min-height: 80vh;
+    min-height: fit-content;
 }
   
   .card:hover{
